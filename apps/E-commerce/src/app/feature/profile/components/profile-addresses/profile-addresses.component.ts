@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Type } from '@angular/core';
 import { NgComponentOutlet } from '@angular/common';
 import { AddressStateService } from '../../../../shared/components/ui/dialogs/address-dialog/services/address-state.service';
 import { AddressListDialogComponent } from '../../../../shared/components/ui/dialogs/address-dialog/components/address-list/address-list-dialog.component';
@@ -48,7 +48,7 @@ class InlineDialogRef extends DynamicDialogRef {
 export class ProfileAddressesComponent {
   private readonly state = inject(AddressStateService);
 
-  private readonly componentsMap = {
+  private readonly componentsMap: Record<string, Type<any>> = {
     view: AddressListDialogComponent,
     add: AddressFormsDialogComponent,
     edit: AddressFormsDialogComponent,

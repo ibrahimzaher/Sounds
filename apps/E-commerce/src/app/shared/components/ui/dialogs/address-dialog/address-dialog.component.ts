@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, Type } from '@angular/core';
 import { AddressStateService } from './services/address-state.service';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { AddressListDialogComponent } from './components/address-list/address-list-dialog.component';
@@ -13,7 +13,7 @@ import { NgComponentOutlet } from '@angular/common';
 export class AddressDialogComponent {
   public state = inject(AddressStateService);
   private config = inject(DynamicDialogConfig);
-  private readonly componentsMap = {
+  private readonly componentsMap: Record<string, Type<any>> = {
     view: AddressListDialogComponent,
     add: AddressFormsDialogComponent,
     edit: AddressFormsDialogComponent,
