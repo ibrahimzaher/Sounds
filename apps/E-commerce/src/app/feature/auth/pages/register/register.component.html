@@ -1,0 +1,66 @@
+<form [formGroup]="authForm" (ngSubmit)="submit()" class="flex flex-col gap-3">
+  <div class="grid grid-cols-2 gap-3">
+    <lib-text-input
+      [label]="'AUTH.REGISTER.FIRST_NAME' | translate"
+      [placeholder]="'AUTH.REGISTER.FIRST_NAME' | translate"
+      formControlName="firstName"
+    ></lib-text-input>
+
+    <lib-text-input
+      [label]="'AUTH.REGISTER.LAST_NAME' | translate"
+      [placeholder]="'AUTH.REGISTER.LAST_NAME' | translate"
+      formControlName="lastName"
+    ></lib-text-input>
+  </div>
+
+  <lib-text-input
+    [label]="'AUTH.REGISTER.EMAIL' | translate"
+    [placeholder]="'AUTH.REGISTER.EMAIL' | translate"
+    type="email"
+    formControlName="email"
+  ></lib-text-input>
+
+  <lib-phone-input
+    [label]="'AUTH.REGISTER.PHONE' | translate"
+    formControlName="phone"
+  >
+  </lib-phone-input>
+
+  <div class="relative">
+    <lib-select-input
+      [label]="'AUTH.REGISTER.GENDER' | translate"
+      formControlName="gender"
+      [options]="[
+        { label: ('AUTH.REGISTER.MALE' | translate), value: 'male' },
+        { label: ('AUTH.REGISTER.FEMALE' | translate), value: 'female' }
+      ]"
+    ></lib-select-input>
+  </div>
+
+  <lib-text-input
+    [label]="'AUTH.REGISTER.PASSWORD' | translate"
+    type="password"
+    [placeholder]="'AUTH.REGISTER.PASSWORD' | translate"
+    formControlName="password"
+    [icon]="'lock'"
+  ></lib-text-input>
+
+  <lib-text-input
+    [label]="'AUTH.REGISTER.CONFIRM_PASSWORD' | translate"
+    [placeholder]="'AUTH.REGISTER.CONFIRM_PASSWORD' | translate"
+    type="password"
+    formControlName="rePassword"
+    [icon]="'lock'"
+  ></lib-text-input>
+
+  <div class="mt-4">
+    <lib-button
+      type="submit"
+      [block]="true"
+      [disabled]="isLoading()"
+      [loading]="isLoading()"
+    >
+      {{ 'AUTH.REGISTER.SUBMIT' | translate }}
+    </lib-button>
+  </div>
+</form>

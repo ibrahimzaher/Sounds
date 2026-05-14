@@ -1,0 +1,10 @@
+<section class="grid grid-cols-1 gap-6 lg:grid-cols-4">
+  <h1 class="sr-only">Products</h1>
+  <div class="min-w-0 lg:col-span-1">
+    <app-filters [initialCategoryIds]="initialCategoryIds()" [initialOccasionIds]="initialOccasionIds()"
+      (filterChange)="onFilterChange($event)"></app-filters>
+  </div>
+  <app-product-list class="min-w-0 lg:col-span-3" [categoryIds]="appliedFilters().categoryIds"
+    [occasionIds]="appliedFilters().occasionIds" [rating]="appliedFilters().rating"
+    [priceFrom]="appliedFilters().priceFrom" [priceTo]="appliedFilters().priceTo"></app-product-list>
+</section>

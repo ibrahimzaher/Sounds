@@ -1,0 +1,12 @@
+<a [routerLink]="banner.link"
+  class="relative rounded-2xl overflow-hidden group h-[200px] md:h-[240px] block cursor-pointer">
+  <img [src]="banner.imageSrc" [alt]="banner.badge | translate"
+    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-5 md:p-6">
+    <span class="bg-white text-maroon-600 text-[10px] md:text-[11px] font-bold px-3 py-1 rounded-full w-fit mb-2">{{
+      banner.badge | translate }}</span>
+    <h3 class="text-white text-sm md:text-base lg:text-[17px] font-semibold leading-tight pr-4">{{ banner.title |
+      translate }}</h3>
+  </div>
+</a>

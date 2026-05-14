@@ -1,0 +1,26 @@
+<button
+  [type]="type()"
+  [attr.aria-label]="ariaLabel() || null"
+  [disabled]="disabled() || loading()"
+  [class]="classes()"
+  (click)="onClick($event)"
+>
+  @if (loading()) {
+  <ng-container>
+    <lucide-icon
+      [name]="Loader2"
+      class="animate-spin h-5 w-5"
+      aria-hidden="true"
+    ></lucide-icon>
+    Loading...
+  </ng-container>
+  } @else { @if (icon() && iconPos() === 'left') {
+  <lucide-icon [name]="icon()" class="h-4 w-4" aria-hidden="true"></lucide-icon>
+  }
+
+  <ng-content></ng-content>
+
+  @if (icon() && iconPos() === 'right') {
+  <lucide-icon [name]="icon()" class="h-4 w-4" aria-hidden="true"></lucide-icon>
+  } }
+</button>

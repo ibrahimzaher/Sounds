@@ -1,0 +1,39 @@
+<section>
+  <h1 class="sr-only">Checkout</h1>
+  <!-- Stepper -->
+  <div class="mb-6">
+    <app-stepper
+      [totalSteps]="checkoutStepsCount"
+      [currentStep]="currentStep()"
+    ></app-stepper>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="grid grid-cols-1 gap-12 lg:grid-cols-12">
+    <!-- Left Section: Steps Content (8 Cols) -->
+    <div class="lg:col-span-8">
+      @if (currentStep() === 1) {
+      <app-shipping-address
+        (proceedToPayment)="onAddressProceed($event)"
+      ></app-shipping-address>
+      } @else {
+      <app-payment-method-section
+        [isLoading]="isLoading()"
+        (methodSelected)="onPaymentMethodSelected($event)"
+        (back)="onBack()"
+        (checkout)="onNext()"
+      ></app-payment-method-section>
+      }
+    </div>
+
+    <!-- Right Section: Order Summary (4 Cols) -->
+    <div class="lg:col-span-4">
+      <app-checkout-summary></app-checkout-summary>
+    </div>
+  </div>
+
+  <!-- Products You May Like -->
+  <div class="mt-10">
+    <app-product-liked></app-product-liked>
+  </div>
+</section>

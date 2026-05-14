@@ -1,0 +1,16 @@
+<section>
+  <h1 class="sr-only">Shopping cart</h1>
+  <div class="mb-15 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:gap-6">
+    <div class="lg:col-span-8">
+      <app-cart-details
+        [cart]="cart()"
+        [cartCount]="cartCount()"
+      ></app-cart-details>
+    </div>
+
+    <div class="lg:col-span-4">
+      <app-checkout-summary [showCheckoutButton]="true" />
+    </div>
+  </div>
+  <app-product-liked></app-product-liked>
+</section>

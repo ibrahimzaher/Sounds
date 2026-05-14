@@ -1,0 +1,127 @@
+<div class="space-y-6">
+  <h1 class="text-4xl font-black text-zinc-900 dark:text-white">
+    {{ 'SHIPPING_ADDRESS.TITLE' | translate }}
+  </h1>
+
+  @if (shippingAddresses().length === 0) {
+  <div
+    class="flex flex-col items-center justify-center p-12 border-2 border-dashed border-zinc-200 rounded-3xl"
+  >
+    <lucide-angular
+      name="map-pin"
+      [size]="48"
+      class="text-zinc-300 mb-4"
+    ></lucide-angular>
+    <p class="text-zinc-500 dark:text-zinc-400 font-medium text-lg">
+      {{ 'SHIPPING_ADDRESS.NO_ADDRESSES' | translate }}
+    </p>
+  </div>
+  }
+
+  <div class="space-y-4">
+    @for (address of shippingAddresses(); track address._id) {
+    <button
+      type="button"
+      (click)="selectAddress(address)"
+      [attr.aria-pressed]="selectedAddress()?._id === address._id"
+      [attr.aria-label]="'Select shipping address in ' + address.city"
+      class="group relative w-full flex justify-between items-center border-2 p-6 rounded-3xl cursor-pointer transition-all duration-300"
+      [class]="
+        selectedAddress()?._id === address._id
+          ? 'bg-maroon-600 border-maroon-600 shadow-xl shadow-maroon-600/20'
+          : 'bg-white dark:bg-zinc-900 border-zinc-100 dark:border-zinc-800 hover:border-maroon-200 dark:hover:border-maroon-900'
+      "
+    >
+      <div class="space-y-1">
+        <h2
+          class="font-black text-2xl"
+          [class]="
+            selectedAddress()?._id === address._id
+              ? 'text-white'
+              : 'text-zinc-900 dark:text-zinc-100'
+          "
+        >
+          {{ address.city }}
+        </h2>
+        <p
+          class="text-sm font-medium"
+          [class]="
+            selectedAddress()?._id === address._id
+              ? 'text-maroon-50'
+              : 'text-zinc-500 dark:text-zinc-400'
+          "
+        >
+          {{ address.street }}
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div
+          class="flex h-10 w-10 items-center justify-center rounded-full transition-colors duration-300"
+          [class]="
+            selectedAddress()?._id === address._id
+              ? 'bg-white/20 text-white'
+              : 'bg-maroon-50 text-maroon-600 dark:bg-maroon-900/30 dark:text-maroon-400'
+          "
+        >
+          <lucide-angular name="phone" [size]="18"></lucide-angular>
+        </div>
+        <span
+          class="text-lg font-bold"
+          [class]="
+            selectedAddress()?._id === address._id
+              ? 'text-white'
+              : 'text-zinc-700 dark:text-zinc-300'
+          "
+        >
+          {{ address.phone }}
+        </span>
+      </div>
+
+      <!-- Selection Indicator Dot -->
+      @if (selectedAddress()?._id === address._id) {
+      <div
+        class="absolute -left-2 -top-2 h-6 w-6 rounded-full bg-zinc-900 border-4 border-white dark:border-zinc-950 flex items-center justify-center"
+      >
+        <div class="h-1.5 w-1.5 rounded-full bg-white"></div>
+      </div>
+      }
+    </button>
+    }
+  </div>
+
+  @if (shippingAddresses().length > 0) {
+  <div class="flex items-center gap-4 py-4">
+    <div class="h-px flex-1 bg-zinc-100 dark:bg-zinc-800"></div>
+    <span class="text-xs font-black uppercase tracking-widest text-zinc-400">
+      {{ 'SHIPPING_ADDRESS.OR' | translate }}
+    </span>
+    <div class="h-px flex-1 bg-zinc-100 dark:bg-zinc-800"></div>
+  </div>
+  }
+
+  <div class="space-y-8">
+    <div class="flex justify-center">
+      <button
+        type="button"
+        (click)="addAddress()"
+        aria-label="Add a new shipping address"
+        class="text-maroon-600 hover:text-maroon-700 font-bold text-sm transition-colors flex min-h-11 items-center gap-2 px-3"
+      >
+        <lucide-angular name="plus-circle" [size]="18"></lucide-angular>
+        {{ 'SHIPPING_ADDRESS.ADD_NEW_ADDRESS' | translate }}
+      </button>
+    </div>
+
+    <div class="flex justify-end">
+      <lib-button
+        [iconPos]="'right'"
+        [icon]="nextIcon()"
+        [disabled]="shippingAddresses().length === 0 || !selectedAddress()"
+        (buttonClick)="next()"
+      >
+        {{ 'SHIPPING_ADDRESS.NEXT' | translate }}
+      </lib-button>
+    </div>
+  </div>
+</div>

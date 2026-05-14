@@ -1,0 +1,40 @@
+<div class="min-h-screen grid grid-cols-1 lg:grid-cols-2 bg-white dark:bg-[#27272A] transition-colors duration-300">
+    <div
+        class="flex flex-col justify-center items-center p-8 lg:p-12 relative w-full max-w-2xl mx-auto lg:mx-0 lg:max-w-none">
+
+        <div class="mb-8 w-full max-w-md">
+            <div class="flex justify-between items-center mb-4">
+                <app-theme-switcher />
+                <app-language-switcher />
+            </div>
+
+            <app-auth-separator />
+        </div>
+
+        <div class="w-full max-w-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <app-auth-title [title]="currentPageData().title || ''" [style]="currentPageData().titleStyle || 'default'"
+                [description]="currentPageData().description || ''" />
+
+            <div class="border-b border-gray-200 dark:border-gray-700"></div>
+
+            <div class="py-6">
+                <router-outlet (activate)="onActivate($event)"></router-outlet>
+            </div>
+
+            <div class="border-b border-gray-200 dark:border-gray-700 mb-6"></div>
+
+            <app-auth-footer [text]="currentPageData().footerText || ''"
+                [linkText]="currentPageData().footerLinkText || ''"
+                [linkRoute]="currentPageData().footerLinkRoute || ''" />
+        </div>
+
+        <div class="mt-8 w-full max-w-md">
+            <app-auth-separator orientation="bottom" />
+        </div>
+
+    </div>
+
+    <div class="hidden lg:block relative h-full">
+        <app-auth-background />
+    </div>
+</div>

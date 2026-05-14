@@ -1,0 +1,16 @@
+@if (isLoading()) {
+<div class="flex justify-center items-center min-h-100">
+  <div class="animate-pulse text-zinc-400">{{ 'PRODUCT_DETAILS.LOADING' | translate }}</div>
+</div>
+} @else if (product()) {
+<section class="flex flex-col gap-12 sm:gap-16">
+  <div class="grid grid-cols-1 items-start gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
+    <app-product-gallery [product]="product()" />
+
+    <app-product-info [product]="product()" (addToCart)="handleAddToCart($event)"
+      (toggleWishlist)="handleToggleWishlist($event)" />
+  </div>
+  <app-product-reviews [reviews]="reviews()" />
+  <app-related-product [products]="relatedProducts()" />
+</section>
+}

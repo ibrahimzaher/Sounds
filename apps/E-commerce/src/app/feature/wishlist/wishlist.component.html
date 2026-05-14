@@ -1,0 +1,116 @@
+<section>
+  <div>
+    <!-- Page Header -->
+    <div class="mb-8">
+      <h1
+        class="text-2xl sm:text-3xl font-bold text-zinc-800 dark:text-zinc-50"
+      >
+        {{ 'WISHLIST.TITLE' | translate }}
+      </h1>
+      @if (wishlistService.wishlistProducts().length > 0) {
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+        {{ wishlistService.wishlistProducts().length }}
+        {{ 'WISHLIST.ITEMS_COUNT' | translate }}
+      </p>
+      }
+    </div>
+
+    @if (wishlistService.isLoading()) {
+    <!-- Loading State -->
+    <div
+      role="status"
+      aria-live="polite"
+      aria-label="Loading wishlist items"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+    >
+      @for (i of [1,2,3,4]; track i) {
+      <div class="animate-pulse rounded-2xl bg-zinc-100 dark:bg-zinc-800">
+        <div
+          class="aspect-square rounded-t-2xl bg-zinc-200 dark:bg-zinc-700"
+        ></div>
+        <div class="p-4 space-y-3">
+          <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded w-3/4"></div>
+          <div class="h-4 bg-zinc-200 dark:bg-zinc-700 rounded w-1/2"></div>
+          <div class="flex gap-2 pt-2">
+            <div
+              class="h-10 bg-zinc-200 dark:bg-zinc-700 rounded-xl flex-1"
+            ></div>
+            <div
+              class="h-10 bg-zinc-200 dark:bg-zinc-700 rounded-xl w-10"
+            ></div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    } @else if (wishlistService.wishlistProducts().length === 0) {
+    <!-- Empty State -->
+    <div class="flex flex-col items-center justify-center py-16 text-center">
+      <div
+        class="w-24 h-24 sm:w-32 sm:h-32 mb-6 rounded-full bg-soft-pink-50 dark:bg-zinc-800 flex items-center justify-center"
+      >
+        <lucide-icon
+          name="heart"
+          class="w-12 h-12 sm:w-16 sm:h-16 text-soft-pink-300 dark:text-zinc-600"
+        >
+        </lucide-icon>
+      </div>
+      <h2
+        class="text-xl sm:text-2xl font-semibold text-zinc-700 dark:text-zinc-200 mb-2"
+      >
+        {{ 'WISHLIST.EMPTY_TITLE' | translate }}
+      </h2>
+      <p
+        class="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 mb-8 max-w-md"
+      >
+        {{ 'WISHLIST.EMPTY_SUBTITLE' | translate }}
+      </p>
+      <lib-button (buttonClick)="browseProducts()" [icon]="'shopping-cart'">
+        {{ 'WISHLIST.BROWSE_PRODUCTS' | translate }}
+      </lib-button>
+    </div>
+    } @else {
+    <!-- Wishlist Grid -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+    >
+      @for (product of wishlistService.wishlistProducts(); track product._id) {
+      <div class="wishlist-card h-full">
+        <app-product-card [product]="product"></app-product-card>
+      </div>
+      }
+    </div>
+    }
+
+    <!-- Continue Shopping & Products You May Like Section -->
+    <div
+      class="mt-16 pt-12 border-t border-zinc-100 dark:border-zinc-800 w-full"
+    >
+      <div class="mb-12">
+        <button
+          type="button"
+          (click)="browseProducts()"
+          class="flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-maroon-700 hover:bg-maroon-800 text-white text-sm font-medium transition-colors cursor-pointer w-auto max-w-xs shadow-sm hover:shadow-md"
+        >
+          <lucide-icon
+            name="arrow-left"
+            [size]="18"
+            [strokeWidth]="2.5"
+          ></lucide-icon>
+          {{ 'WISHLIST.CONTINUE_SHOPPING' | translate }}
+        </button>
+      </div>
+
+      <app-heading-title
+        [title]="'WISHLIST.PRODUCTS_YOU_MAY_LIKE' | translate"
+      />
+      <div class="px-3">
+        <app-prodcut-carousal
+          [products]="recommendedProducts()"
+          [responsiveOptions]="recommendedProductsCarouselOptions"
+          [notFound]="'WISHLIST.NO_RECOMMENDATIONS' | translate"
+        />
+      </div>
+    </div>
+  </div>
+</section>

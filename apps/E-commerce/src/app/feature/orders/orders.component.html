@@ -1,0 +1,125 @@
+<section>
+  <div class="mb-6">
+    <h1
+      class="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-50"
+    >
+      {{ 'ORDERS.TITLE' | translate }}
+    </h1>
+  </div>
+
+  @if (isLoading()) {
+  <ng-container [ngTemplateOutlet]="loadingState"></ng-container>
+  } @else if (orders().length === 0) {
+  <ng-container [ngTemplateOutlet]="emptyState"></ng-container>
+  } @else {
+  <ng-container [ngTemplateOutlet]="ordersState"></ng-container>
+  }
+</section>
+
+<ng-template #loadingState>
+  <div class="space-y-5">
+    @for (card of skeletonCards; track card) {
+    <ng-container [ngTemplateOutlet]="loadingCard"></ng-container>
+    }
+  </div>
+</ng-template>
+
+<ng-template #loadingCard>
+  <div
+    class="overflow-hidden rounded-[1.35rem] border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60"
+  >
+    <div
+      class="h-12 animate-pulse bg-maroon-700/85 dark:bg-soft-pink-200/70"
+    ></div>
+
+    <div class="space-y-4 p-4 sm:p-5">
+      <div class="flex flex-wrap gap-3">
+        @for (lineClass of skeletonHeaderLines; track lineClass) {
+        <div [class]="lineClass + ' ' + skeletonLineClass"></div>
+        }
+      </div>
+
+      <div class="space-y-2">
+        @for (lineClass of skeletonMetaLines; track lineClass) {
+        <div [class]="lineClass + ' ' + skeletonLineClass"></div>
+        }
+      </div>
+
+      <div class="grid gap-3 md:grid-cols-2">
+        @for (item of skeletonItems; track item) {
+        <ng-container [ngTemplateOutlet]="loadingItem"></ng-container>
+        }
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #loadingItem>
+  <div
+    class="flex items-start gap-3 rounded-2xl border border-zinc-100 bg-zinc-50/80 p-3 dark:border-zinc-800 dark:bg-zinc-950/45"
+  >
+    <div
+      class="h-20 w-20 animate-pulse rounded-xl bg-zinc-200 dark:bg-zinc-800"
+    ></div>
+
+    <div class="flex-1 space-y-3">
+      @for (lineClass of skeletonItemTextLines; track lineClass) {
+      <div [class]="lineClass + ' ' + skeletonLineClass"></div>
+      }
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #emptyState>
+  <div
+    class="flex flex-col items-center justify-center rounded-[1.75rem] border border-zinc-200 bg-white px-6 py-16 text-center shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60"
+  >
+    <div
+      class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-maroon-50 dark:bg-zinc-800"
+    >
+      <lucide-icon
+        name="package"
+        class="h-12 w-12 text-maroon-400 dark:text-soft-pink-300"
+      ></lucide-icon>
+    </div>
+
+    <h2 class="text-2xl font-bold text-zinc-800 dark:text-zinc-50">
+      {{ 'ORDERS.EMPTY_TITLE' | translate }}
+    </h2>
+    <p class="mt-3 max-w-lg text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+      {{ 'ORDERS.EMPTY_SUBTITLE' | translate }}
+    </p>
+
+    <button
+      type="button"
+      (click)="navigateToProducts()"
+      class="mt-8 inline-flex items-center gap-2 rounded-2xl bg-maroon-700 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-maroon-800 dark:bg-soft-pink-200 dark:text-zinc-900 dark:hover:bg-soft-pink-100"
+    >
+      <lucide-icon name="shopping-bag" class="h-4 w-4"></lucide-icon>
+      {{ 'ORDERS.CONTINUE_SHOPPING' | translate }}
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #ordersState>
+  <div class="space-y-5">
+    @for (order of orders(); track order._id) {
+    <app-order-card
+      [order]="order"
+      [isExpanded]="isExpanded(order._id)"
+      (toggleExpanded)="toggleExpanded($event)"
+    ></app-order-card>
+    }
+  </div>
+
+  @if (showPaginator()) {
+  <div class="mt-10 flex justify-center">
+    <app-paginator
+      [first]="first()"
+      [rows]="rows()"
+      [totalRecords]="metadata()?.totalItems ?? 0"
+      (pageChange)="onPageChange($event)"
+    ></app-paginator>
+  </div>
+  }
+</ng-template>

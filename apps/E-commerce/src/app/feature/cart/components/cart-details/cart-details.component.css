@@ -1,0 +1,9 @@
+:host ::ng-deep lib-button.custom-btn button {
+  padding-inline: 1rem;
+}
+
+@media (width >= 40rem) {
+  :host ::ng-deep lib-button.custom-btn button {
+    padding-inline: 2.5rem;
+  }
+}

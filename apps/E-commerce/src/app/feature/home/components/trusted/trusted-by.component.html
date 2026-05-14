@@ -1,0 +1,18 @@
+<section
+  class="mx-auto max-w-6xl rounded-[24px] bg-maroon-50 px-6 py-6 sm:px-8 sm:py-8 lg:px-12 lg:py-10 dark:bg-zinc-700">
+  <h2 class="text-center text-xl font-bold text-maroon-700 dark:text-soft-pink-200 sm:text-2xl lg:text-[2rem]">
+    {{ 'TRUSTED.TRUSTED_PART1' | translate }}
+    <span class="text-maroon-600 dark:text-maroon-400">{{
+      'TRUSTED.TRUSTED_COUNT' | translate
+      }}</span>
+    {{ 'TRUSTED.TRUSTED_PART2' | translate }}
+  </h2>
+  <div
+    class="mt-6 grid grid-cols-2 items-center justify-items-center gap-x-5 gap-y-6 sm:grid-cols-3 sm:gap-x-8 lg:mt-8 lg:grid-cols-6 lg:gap-x-6">
+    @for (image of images(); track $index) {
+    <img
+      class="h-7 w-auto max-w-[180px] object-contain opacity-70 transition-all duration-300 hover:scale-105 hover:opacity-100 sm:h-8 sm:max-w-[140px] lg:h-9 lg:max-w-[150px]"
+      [src]="image" [alt]="'Trusted brand logo ' + ($index + 1)" />
+    }
+  </div>
+</section>

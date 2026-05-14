@@ -1,0 +1,28 @@
+<div class="input-wrapper">
+  @if (label()) {
+  <label [for]="inputId()" class="input-label">
+    {{ label() }}
+  </label>
+  }
+
+  <textarea
+    [id]="inputId()"
+    [rows]="rows()"
+    [placeholder]="placeholder()"
+    [value]="value || ''"
+    [disabled]="isDisabled"
+    [style.resize]="resize()"
+    [attr.aria-describedby]="describedBy"
+    [attr.aria-invalid]="Invalid"
+    (blur)="onTouched()"
+    (input)="value = $any($event.target).value; onChange(value)"
+    class="input-base min-h-28"
+    [class.input-status-normal]="!Invalid"
+    [class.input-status-error]="Invalid"
+  ></textarea>
+
+  <lib-input-error
+    [control]="control"
+    [errorId]="errorId()"
+  ></lib-input-error>
+</div>

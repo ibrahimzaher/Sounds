@@ -1,0 +1,31 @@
+<div class="p-6 dark:bg-transparent">
+  <h2 class="text-[30px] font-bold mb-6 text-start text-zinc-800">
+    {{
+      isEdit()
+        ? ('ADDRESS_DIALOG.EDIT_TITLE' | translate)
+        : ('ADDRESS_DIALOG.CREATE_TITLE' | translate)
+    }}
+  </h2>
+
+  <app-stepper [totalSteps]="2" [currentStep]="steps()"></app-stepper>
+
+  <app-address-form-step
+    [hidden]="steps() !== 1"
+    [form]="addressForm"
+    (next)="onNext()"
+  ></app-address-form-step>
+
+  <app-address-map-step
+    [hidden]="steps() !== 2"
+    [center]="center"
+    [zoom]="zoom"
+    [markerPosition]="markerPosition"
+    [markerOptions]="markerOptions"
+    [isEdit]="isEdit()"
+    [isRtl]="isRtl()"
+    (back)="steps.set(1)"
+    (mapClicked)="onMapClick($event)"
+    (findLocation)="getCurrentLocation()"
+    (submitted)="onSubmit()"
+  ></app-address-map-step>
+</div>

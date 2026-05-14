@@ -1,0 +1,159 @@
+<header
+  class="fixed w-full z-150 px-4 py-3 bg-bg-main dark:text-zinc-50 text-zinc-500 text-sm font-medium"
+>
+  <div
+    class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2"
+  >
+    <div
+      class="flex flex-col lg:flex-row lg:items-center gap-3 w-full lg:flex-1"
+    >
+      <div class="flex items-center gap-3 w-full">
+        <a routerLink="/" aria-label="Rose home">
+          <img
+            src="images/navbar/logo.png"
+            width="80"
+            height="80"
+            class="w-12 h-12 lg:w-20 lg:h-20 shrink-0"
+            alt="Rose"
+          />
+        </a>
+        @if (user()) {
+        <button
+          type="button"
+          class="flex max-w-42.5 shrink-0 flex-col rounded-2xl px-2 py-1.5 text-start transition-colors hover:bg-maroon-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-maroon-200 dark:hover:bg-zinc-800 dark:focus-visible:ring-soft-pink-300 sm:max-w-55 sm:px-3 sm:py-2 lg:max-w-60"
+          (click)="openAddressManager()"
+          [title]="deliveryAddressText()"
+          [attr.aria-label]="deliveryAddressText()"
+        >
+          <span class="hidden text-xs dark:text-zinc-400 sm:block">
+            {{ 'NAVBAR.DELIVERTO' | translate }}
+          </span>
+          <span
+            class="text-maroon-700 dark:text-soft-pink-200 flex items-center gap-1 text-sm font-semibold min-w-0"
+          >
+            <lucide-icon
+              name="map-pin-pen"
+              class="w-4 h-4 shrink-0"
+            ></lucide-icon>
+            <span class="truncate">{{ deliveryAddressText() }}</span>
+          </span>
+        </button>
+        }
+        <app-navbar-search></app-navbar-search>
+      </div>
+    </div>
+
+    <div
+      class="flex items-center justify-between lg:justify-end gap-4 w-full lg:w-auto"
+    >
+      @if (user()) {
+      <button
+        type="button"
+        class="relative flex max-w-40 shrink-0 items-center gap-1 rounded-full cursor-pointer transition sm:max-w-48 lg:flex-col lg:items-start lg:gap-0"
+        (click)="menu.toggle($event)"
+        aria-haspopup="menu"
+        aria-label="Open account menu"
+      >
+        <span class="hidden whitespace-nowrap lg:block">{{
+          'NAVBAR.HELLO' | translate
+        }}</span>
+        <div
+          class="ms-2 flex min-w-0 items-center gap-1 text-maroon-500 dark:text-soft-pink-200"
+        >
+          <span
+            class="truncate whitespace-nowrap block max-w-[80px] sm:max-w-[120px]"
+            >{{ user()?.firstName }}</span
+          >
+          <lucide-icon
+            aria-hidden="true"
+            class="h-5 w-5 shrink-0"
+            name="chevron-down"
+          ></lucide-icon>
+        </div>
+      </button>
+
+      } @else {
+      <a
+        routerLink="/auth/login"
+        class="flex lg:ms-2 shrink-0 items-center gap-1 hover:text-maroon-400 hover:dark:text-soft-pink-400"
+      >
+        <lucide-icon
+          strokeWidth="2"
+          class="w-5 h-5"
+          name="user-round"
+        ></lucide-icon>
+        <span>
+          {{ 'NAVBAR.LOGIN' | translate }}
+        </span>
+      </a>
+      }
+      <p-menu
+        #menu
+        [popup]="true"
+        [model]="items()"
+        appendTo="body"
+        ariaLabel="Account menu"
+      ></p-menu>
+
+      <p-divider [layout]="'vertical'" class="m-0!"></p-divider>
+
+      <ul class="flex gap-4 items-center">
+        <li>
+          <a
+            aria-label="Wishlist"
+            class="hover:text-maroon-400 cursor-pointer relative block"
+            (click)="navigateToWishlist($event)"
+            routerLinkActive="text-maroon-400"
+            routerLink="/wishlist"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <lucide-icon
+              class="w-5 h-5 lg:w-6 lg:h-6"
+              name="heart"
+            ></lucide-icon>
+            @if (wishlistService.wishlistCount() > 0) {
+            <span
+              class="absolute -top-2 -right-2 bg-red-500 min-w-5 h-5 flex items-center justify-center rounded-full text-white text-[10px] px-1 font-bold border-2 border-bg-main"
+            >
+              {{ wishlistService.wishlistCount() }}
+            </span>
+            }
+          </a>
+        </li>
+        <li>
+          <a
+            aria-label="Shopping cart"
+            class="hover:text-maroon-400 cursor-pointer relative block"
+            (click)="navigateToCart($event)"
+            routerLinkActive="text-maroon-400"
+            routerLink="/shopping-cart"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <lucide-icon
+              class="w-5 h-5 lg:w-6 lg:h-6"
+              name="shopping-cart"
+            ></lucide-icon>
+            @if (cartCount() > 0) {
+            <span
+              class="absolute -top-2 -right-2 bg-red-500 min-w-5 h-5 flex items-center justify-center rounded-full text-white text-[10px] px-1 font-bold border-2 border-bg-main"
+            >
+              {{ cartCount() > 99 ? '99+' : cartCount() }}
+            </span>
+            }
+          </a>
+        </li>
+        <li class="hover:text-maroon-400 cursor-pointer">
+          <lucide-icon
+            aria-hidden="true"
+            class="w-5 h-5 lg:w-6 lg:h-6"
+            name="bell"
+          ></lucide-icon>
+        </li>
+      </ul>
+      <p-divider [layout]="'vertical'" class="m-0!"></p-divider>
+      <app-language-switcher></app-language-switcher>
+      <p-divider [layout]="'vertical'" class="m-0!"></p-divider>
+      <app-theme-switcher></app-theme-switcher>
+    </div>
+  </div>
+</header>

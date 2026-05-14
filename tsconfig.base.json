@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@elevate/auth-data-access": ["./libs/auth/data-access/src/index.ts"],
+      "@elevate/auth-domain": ["./libs/auth/domain/src/index.ts"],
+      "@elevate/reusable-input": [
+        "./libs/shared-ui/reusable-input/src/index.ts"
+      ],
+      "@elevate/reusable-ui": ["./libs/shared-ui/reusable-ui/src/index.ts"],
+      "apps/*": ["./apps/*"],
+      "dashboard/Routes": [
+        "./apps/dashboard/src/app/remote-entry/entry.routes.ts"
+      ],
+      "libs/*": ["./libs/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

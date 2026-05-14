@@ -1,0 +1,133 @@
+<div class="bg-white dark:bg-zinc-900 p-6 rounded-lg">
+  <form
+    [formGroup]="profileForm"
+    (ngSubmit)="onSubmit()"
+    aria-label="Profile Details Form"
+  >
+    <!-- Photo Upload -->
+    <div
+      class="flex items-center gap-6 mb-8"
+      role="group"
+      aria-label="Profile Photo"
+    >
+      <div
+        class="relative w-24 h-24 rounded-full overflow-hidden bg-gray-100 dark:bg-zinc-800 flex-shrink-0 border border-gray-200 dark:border-zinc-700"
+        aria-hidden="true"
+      >
+        @if (previewUrl()) {
+        <img
+          [src]="previewUrl()"
+          alt="User Profile Picture"
+          class="w-full h-full object-cover"
+        />
+        } @else {
+        <div
+          class="w-full h-full flex items-center justify-center text-gray-400 dark:text-zinc-500"
+        >
+          <i class="pi pi-user text-4xl"></i>
+        </div>
+        } @if (isUploadingPhoto()) {
+        <div
+          class="absolute inset-0 bg-black/50 flex items-center justify-center"
+          aria-label="Uploading Photo"
+        >
+          <i class="pi pi-spin pi-spinner text-white text-2xl"></i>
+        </div>
+        }
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-lg text-gray-800 dark:text-white"
+          id="upload-photo-title"
+        >
+          {{ 'PROFILE_PAGE.UPLOAD_PHOTO' | translate }}
+        </h3>
+        <p
+          class="text-sm text-gray-500 dark:text-zinc-400 mb-3"
+          id="upload-photo-hint"
+        >
+          {{ 'PROFILE_PAGE.UPLOAD_HINT' | translate }}
+        </p>
+        <lib-button
+          type="button"
+          variant="outline"
+          (buttonClick)="fileInput.click()"
+          aria-describedby="upload-photo-title upload-photo-hint"
+        >
+          {{ 'PROFILE_PAGE.CHOOSE_FILE' | translate }}
+        </lib-button>
+        <input
+          #fileInput
+          type="file"
+          accept=".jpg,.png,.gif"
+          class="hidden"
+          (change)="onFileSelected($event)"
+          aria-hidden="true"
+          tabindex="-1"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div class="flex flex-col gap-2">
+        <lib-text-input
+          id="firstName"
+          formControlName="firstName"
+          [label]="'PROFILE_PAGE.FIRST_NAME' | translate"
+        ></lib-text-input>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <lib-text-input
+          id="lastName"
+          formControlName="lastName"
+          [label]="'PROFILE_PAGE.LAST_NAME' | translate"
+        ></lib-text-input>
+      </div>
+
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <lib-text-input
+          id="email"
+          type="email"
+          formControlName="email"
+          [label]="'PROFILE_PAGE.EMAIL' | translate"
+        ></lib-text-input>
+      </div>
+
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <lib-phone-input
+          id="phone"
+          formControlName="phone"
+          [label]="'PROFILE_PAGE.PHONE' | translate"
+        ></lib-phone-input>
+      </div>
+
+      <div class="flex flex-col gap-2 md:col-span-2">
+        <lib-text-input
+          id="gender"
+          formControlName="gender"
+          [label]="'PROFILE_PAGE.GENDER' | translate"
+        ></lib-text-input>
+      </div>
+    </div>
+
+    <div
+      class="flex items-center justify-between pt-6 border-t border-gray-100 dark:border-zinc-800"
+    >
+      <lib-button type="button" variant="destructive" (click)="deleteAccount()">
+        {{ 'PROFILE_PAGE.DELETE_ACCOUNT' | translate }}
+      </lib-button>
+
+      <lib-button
+        type="submit"
+        variant="primary"
+        [disabled]="profileForm.invalid || profileForm.pristine || isLoading()"
+        [loading]="isLoading()"
+      >
+        {{ 'PROFILE_PAGE.SAVE_CHANGES' | translate }}
+      </lib-button>
+    </div>
+  </form>
+
+  <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+</div>

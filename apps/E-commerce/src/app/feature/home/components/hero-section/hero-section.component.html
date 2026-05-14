@@ -1,0 +1,253 @@
+<section aria-label="Featured promotions">
+  <div class="flex flex-col gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <a
+        [routerLink]="leftBanner.link"
+        [attr.aria-label]="
+          (leftBanner.title | translate) +
+          '. ' +
+          (leftBanner.ctaText | translate)
+        "
+        class="relative rounded-2xl overflow-hidden group h-62.5 md:h-100 block cursor-pointer"
+      >
+        <img
+          [src]="leftBanner.imageSrc"
+          [alt]="leftBanner.title"
+          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          loading="lazy"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8"
+        >
+          <span
+            class="bg-soft-pink-50 text-maroon-700 text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-full w-fit mb-3"
+            >{{ leftBanner.badge | translate }}</span
+          >
+          <h2
+            class="text-white text-xl md:text-2xl lg:text-3xl leading-snug font-bold mb-6 max-w-50 drop-shadow-md"
+          >
+            {{ leftBanner.title | translate }}
+          </h2>
+          <span
+            aria-hidden="true"
+            class="bg-soft-pink-50 text-maroon-700 hover:bg-white font-bold py-2.5 px-6 rounded-xl w-fit transition-colors flex items-center justify-center gap-3 text-sm z-10 pointer-events-none shadow-lg"
+          >
+            {{ leftBanner.ctaText | translate }}
+            <i
+              class="pi text-sm"
+              [class.pi-arrow-left]="isRTL()"
+              [class.pi-arrow-right]="!isRTL()"
+            ></i>
+          </span>
+        </div>
+      </a>
+
+      <div
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Main promotional banners"
+        class="relative isolate block h-75 overflow-hidden rounded-[1.75rem] border-0 bg-transparent shadow-[0_22px_60px_rgba(78,18,29,0.18)] md:col-span-2 md:h-100"
+      >
+        @if (isHeroCarouselReady()) {
+        <div class="absolute top-5 right-5 z-20 flex items-center gap-2">
+          @for (banner of mainBanners; track $index) {
+          <button
+            type="button"
+            class="hero-indicator rounded-full transition-all duration-300 ease-out"
+            [class.hero-indicator-active]="activeMainBanner() === $index"
+            [class.hero-indicator-inactive]="activeMainBanner() !== $index"
+            [attr.aria-current]="activeMainBanner() === $index ? 'true' : null"
+            [attr.aria-label]="
+              'Go to banner ' + ($index + 1) + ': ' + (banner.title | translate)
+            "
+            (click)="setActiveMainBanner($index)"
+          ></button>
+          }
+        </div>
+
+        <div
+          class="absolute bottom-5 z-20 inline-flex items-center overflow-hidden rounded-full border border-white/80 bg-white/95 shadow-[0_14px_35px_rgba(79,22,31,0.18)] backdrop-blur-sm"
+          [class.left-5]="isRTL()"
+          [class.right-5]="!isRTL()"
+          dir="ltr"
+        >
+          @if (isRTL()) {
+          <button
+            type="button"
+            class="hero-nav-button flex h-10 w-11 items-center justify-center transition-colors"
+            [class.hero-nav-button-disabled]="isLastMainBanner()"
+            [class.hero-nav-button-active]="!isLastMainBanner()"
+            aria-label="Next banner"
+            [disabled]="isLastMainBanner()"
+            (click)="showNextMainBanner()"
+          >
+            <i class="pi pi-angle-left text-sm"></i>
+          </button>
+          <span class="h-5 w-px bg-zinc-200"></span>
+          <button
+            type="button"
+            class="hero-nav-button flex h-10 w-11 items-center justify-center transition-colors"
+            [class.hero-nav-button-disabled]="isFirstMainBanner()"
+            [class.hero-nav-button-active]="!isFirstMainBanner()"
+            aria-label="Previous banner"
+            [disabled]="isFirstMainBanner()"
+            (click)="showPreviousMainBanner()"
+          >
+            <i class="pi pi-angle-right text-sm"></i>
+          </button>
+          } @else {
+          <button
+            type="button"
+            class="hero-nav-button flex h-10 w-11 items-center justify-center transition-colors"
+            [class.hero-nav-button-disabled]="isFirstMainBanner()"
+            [class.hero-nav-button-active]="!isFirstMainBanner()"
+            aria-label="Previous banner"
+            [disabled]="isFirstMainBanner()"
+            (click)="showPreviousMainBanner()"
+          >
+            <i class="pi pi-angle-left text-sm"></i>
+          </button>
+          <span class="h-5 w-px bg-zinc-200"></span>
+          <button
+            type="button"
+            class="hero-nav-button flex h-10 w-11 items-center justify-center transition-colors"
+            [class.hero-nav-button-disabled]="isLastMainBanner()"
+            [class.hero-nav-button-active]="!isLastMainBanner()"
+            aria-label="Next banner"
+            [disabled]="isLastMainBanner()"
+            (click)="showNextMainBanner()"
+          >
+            <i class="pi pi-angle-right text-sm"></i>
+          </button>
+          }
+        </div>
+
+        <p-carousel
+          class="hero-main-carousel h-full w-full"
+          [value]="mainBanners"
+          [page]="activeMainBanner()"
+          [numVisible]="1"
+          [numScroll]="1"
+          [circular]="false"
+          [autoplayInterval]="5000"
+          [showNavigators]="false"
+          [showIndicators]="false"
+          (onPage)="setActiveMainBanner($event.page)"
+        >
+          <ng-template let-banner pTemplate="item">
+            <a
+              [routerLink]="banner.link"
+              [attr.aria-label]="
+                (banner.title | translate) + '. ' + (banner.ctaText | translate)
+              "
+              class="relative block h-full w-full cursor-pointer group/slide"
+            >
+              <img
+                [src]="banner.imageSrc"
+                [alt]="banner.title"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover/slide:scale-105"
+              />
+
+              <div
+                class="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,8,10,0.88)_0%,rgba(24,8,10,0.58)_26%,rgba(24,8,10,0.16)_60%,rgba(24,8,10,0.08)_100%)]"
+              ></div>
+
+              <div
+                class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 lg:p-10"
+              >
+                <div class="max-w-88">
+                  <h2
+                    class="mb-2 text-[1.7rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white md:text-[2.35rem]"
+                  >
+                    {{ banner.title | translate }}
+                  </h2>
+                  <p
+                    class="max-w-[18rem] text-xs font-light leading-5 text-white/82 md:text-sm"
+                  >
+                    {{ banner.subtitle | translate }}
+                  </p>
+                </div>
+
+                <div
+                  aria-hidden="true"
+                  class="hero-cta-button mt-5 w-fit pointer-events-none"
+                >
+                  <span
+                    class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-maroon-700 shadow-sm dark:bg-zinc-100"
+                  >
+                    {{ banner.ctaText | translate }}
+                    <i
+                      class="pi text-xs"
+                      [class.pi-arrow-left]="isRTL()"
+                      [class.pi-arrow-right]="!isRTL()"
+                    ></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </ng-template>
+        </p-carousel>
+        } @else {
+        <a
+          [routerLink]="currentMainBanner().link"
+          [attr.aria-label]="
+            (currentMainBanner().title | translate) +
+            '. ' +
+            (currentMainBanner().ctaText | translate)
+          "
+          class="relative block h-full w-full cursor-pointer group/slide"
+        >
+          <img
+            [src]="currentMainBanner().imageSrc"
+            [alt]="currentMainBanner().title"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover/slide:scale-105"
+          />
+
+          <div
+            class="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,8,10,0.88)_0%,rgba(24,8,10,0.58)_26%,rgba(24,8,10,0.16)_60%,rgba(24,8,10,0.08)_100%)]"
+          ></div>
+
+          <div
+            class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 lg:p-10"
+          >
+            <div class="max-w-88">
+              <h2
+                class="mb-2 text-[1.7rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white md:text-[2.35rem]"
+              >
+                {{ currentMainBanner().title | translate }}
+              </h2>
+              <p
+                class="max-w-[18rem] text-xs font-light leading-5 text-white/82 md:text-sm"
+              >
+                {{ currentMainBanner().subtitle | translate }}
+              </p>
+            </div>
+
+            <div
+              aria-hidden="true"
+              class="hero-cta-button mt-5 w-fit pointer-events-none"
+            >
+              <span
+                class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-maroon-700 shadow-sm dark:bg-zinc-100"
+              >
+                {{ currentMainBanner().ctaText | translate }}
+                <i
+                  class="pi text-xs"
+                  [class.pi-arrow-left]="isRTL()"
+                  [class.pi-arrow-right]="!isRTL()"
+                ></i>
+              </span>
+            </div>
+          </div>
+        </a>
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      @for (banner of bottomBanners; track $index) {
+      <app-bottom-banner [banner]="banner"></app-bottom-banner>
+      }
+    </div>
+  </div>
+</section>

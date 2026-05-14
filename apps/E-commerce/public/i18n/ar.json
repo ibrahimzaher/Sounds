@@ -1,0 +1,529 @@
+{
+  "HELLO": "مرحبا",
+  "WELCOME": "مرحبا بكم في التجارة الإلكترونية",
+  "SWITCH_LANGUAGE": "تغيير اللغة",
+  "ADD_WISH": "إضافة لقائمة الأمنيات",
+  "REMOVE_WISH": "إزالة من قائمة الأمنيات",
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "مرحبًا بعودتك!",
+      "FOOTER_TEXT": "ليس لديك حساب بعد؟",
+      "FOOTER_LINK": "أنشئ حساباً الآن!",
+      "EMAIL": "البريد الإلكتروني",
+      "EMAIL_PLACEHOLDER": "user@example.com",
+      "PASSWORD": "كلمة المرور",
+      "PASSWORD_PLACEHOLDER": "********",
+      "REMEMBER_ME": "تذكرني",
+      "FORGOT_PASSWORD": "نسيت كلمة المرور؟",
+      "SUBMIT": "تسجيل دخول"
+    },
+    "REGISTER": {
+      "TITLE": "كن جزءًا من عائلتنا!",
+      "FIRST_NAME": "الاسم الأول",
+      "LAST_NAME": "اسم العائلة",
+      "EMAIL": "البريد الإلكتروني",
+      "PHONE": "رقم الهاتف",
+      "GENDER": "الجنس",
+      "MALE": "ذكر",
+      "FEMALE": "أنثى",
+      "PASSWORD": "كلمة المرور",
+      "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+      "SUBMIT": "إنشاء حساب",
+      "FOOTER_TEXT": "لديك حساب بالفعل؟",
+      "FOOTER_LINK": "سجل الدخول الآن!",
+      "SUCCESS": "تم إنشاء حسابك بنجاح. يمكنك الآن تسجيل الدخول."
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "نسيت كلمة المرور؟",
+      "DESCRIPTION": "لا داعي للقلق، سنرسل لك تعليمات لمساعدتك في إعادة تعيينها.",
+      "FOOTER_TEXT": "تذكرت كلمة المرور؟",
+      "FOOTER_LINK": "سجل الدخول الآن!"
+    },
+    "OTP": {
+      "TITLE": "أدخل رمز التحقق",
+      "DESCRIPTION": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى",
+      "EDIT": "تعديل",
+      "VERIFY": "تحقق من الرمز",
+      "SEND_NEW": "إرسال رمز جديد",
+      "SUCCESS_RESEND": "تم إرسال رمز تحقق جديد إلى بريدك الإلكتروني",
+      "FOOTER_TEXT": "هل تحتاج للمساعدة؟",
+      "FOOTER_LINK": "تواصل معنا"
+    },
+    "RESET_PASSWORD": {
+      "TITLE": "إنشاء كلمة مرور جديدة",
+      "SUBTITLE": "قم بتعيين كلمة مرور قوية لتأمين حسابك.",
+      "PASSWORD_LABEL": "كلمة المرور",
+      "CONFIRM_PASSWORD_LABEL": "تأكيد كلمة المرور",
+      "SUBMIT": "إعادة تعيين كلمة المرور",
+      "FOOTER_TEXT": "هل تحتاج مساعدة؟",
+      "FOOTER_LINK": "اتصل بنا",
+      "SUCCESS": "تم إعادة تعيين كلمة المرور بنجاح.",
+      "ERROR": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+    }
+  },
+  "NAVBAR": {
+    "LOGIN": "تسجيل الدخول",
+    "SEARCH": "ما هي الهدايا الرائعة التي تبحث عنها؟",
+    "SEARCH_RESULTS": {
+      "LOADING": "جاري البحث عن المنتجات...",
+      "NO_RESULTS": "لم يتم العثور على منتجات.",
+      "NO_RECOMMENDATIONS": "لا توجد منتجات متاحة في الوقت الحالي.",
+      "PRODUCTS_YOU_MAY_LIKE": "منتجات قد تعجبك:",
+      "CLEAR": "مسح البحث",
+      "SEARCH_ARIA": "البحث عن المنتجات",
+      "RATING": "التقييم",
+      "RATINGS_COUNT": "({{count}} تقييمات)"
+    },
+    "DELIVERTO": "توصيل إلى:",
+    "DELIVERY_CITY": "القاهرة",
+    "ADD_ADDRESS": "إضافة عنوان",
+    "HELLO": "مرحبا",
+    "ACCOUNT_MENU": {
+      "PROFILE": "ملفي الشخصي",
+      "ADDRESSES": "عناويني",
+      "ORDERS": "طلباتي",
+      "DASHBOARD": "لوحة التحكم",
+      "LOGOUT": "تسجيل الخروج"
+    },
+    "HOME": "الرئيسية",
+    "PRODUCTS": "المنتجات",
+    "CATEGORIES": "التصنيفات",
+    "OCCASIONS": "المناسبات",
+    "CONTACT": "اتصل بنا",
+    "ABOUT": "من نحن",
+    "ABOUT_US": "من نحن",
+    "CART.LOGIN_TO_ACCESS": "يرجى تسجيل الدخول للوصول إلى عربة التسوق",
+    "WISHLIST.LOGIN_TO_ACCESS": "يرجى تسجيل الدخول للوصول إلى قائمة الرغبات"
+  },
+  "SHIPPING_ADDRESS": {
+    "TITLE": "عنوان الشحن",
+    "ADD_NEW_ADDRESS": "إضافة عنوان جديد",
+    "NEXT": "التالي",
+    "OR": "أو",
+    "NO_ADDRESSES": "لا توجد عناوين شحن محفوظة. يرجى إضافة عنوان جديد للمتابعة."
+  },
+  "ADDRESS_DIALOG": {
+    "LIST_TITLE": "عناويني",
+    "ADD_NEW_ADDRESS": "إضافة عنوان جديد",
+    "EDIT_TITLE": "تحديث معلومات العنوان",
+    "CREATE_TITLE": "إضافة عنوان جديد",
+    "STEP_1_TITLE": "أدخل تفاصيل العنوان",
+    "CITY_LABEL": "المدينة",
+    "CITY_PLACEHOLDER": "أدخل اسم المدينة",
+    "STREET_LABEL": "العنوان",
+    "STREET_PLACEHOLDER": "أدخل عنوانك الكامل",
+    "STREET_REQUIRED": "العنوان مطلوب",
+    "PHONE_LABEL": "رقم الهاتف",
+    "PHONE_PLACEHOLDER": "أدخل رقم هاتفك",
+    "NEXT": "التالي",
+    "STEP_2_TITLE": "ابحث عن موقعك",
+    "FIND_LOCATION": "اعثر على موقعي",
+    "SUBMIT_ADD": "إضافة العنوان",
+    "SUBMIT_UPDATE": "تحديث العنوان",
+    "DELETE_CONFIRM": "هل أنت متأكد أنك تريد حذف هذا العنوان؟",
+    "UPDATE_SUCCESS": "تم تحدسيث العنوان بنجاح",
+    "ADD_SUCCESS": "تم إضافة العنوان بنجاح",
+    "DELETE_SUCCESS": "تم حذف العنوان بنجاح",
+    "CANCEL": "إلغاء",
+    "CONFIRM": "تأكيد"
+  },
+  "GALLERY": {
+    "GALLERY_LABEL": "المعرض",
+    "CHECK_OUT": "اكتشف",
+    "OUR_WONDERFUL_GALLERY": "معرضنا الرائع",
+    "IMG_ALT": {
+      "GIFTS_ANNIVERSARY": "هدايا وتقديمات الذكرى السنوية",
+      "CHOCOLATES": "علبة شوكولاتة على شكل قلب مع ورود",
+      "RED_GIFTS": "علب هدايا حمراء مع ورود",
+      "RING_BOX_FLOWERS": "علبة خاتم خطوبة مع أزهار",
+      "RING_BOX_WHITE": "علبة خاتم خطوبة بيضاء",
+      "ENGAGEMENT_CARD": "بطاقة تهنئة بالخطوبة"
+    }
+  },
+  "TRUSTED": {
+    "TRUSTED_PART1": "موثوق من قبل أكثر من",
+    "TRUSTED_COUNT": "4.5 ألف",
+    "TRUSTED_PART2": "شركة"
+  },
+  "TESTIMONIALS": {
+    "HEADING": "آراء حقيقية من عملائنا السعداء",
+    "TITLE": "توصيات العملاء",
+    "NO_DATA": "لا توجد آراء عملاء حالياً. عد للزيارة قريباً!"
+  },
+  "VALIDATION": {
+    "REQUIRED": "هذا الحقل مطلوب",
+    "EMAIL": "يرجى إدخال بريد إلكتروني صحيح",
+    "MIN_LENGTH": "الحد الأدنى {{length}} أحرف",
+    "MAX_LENGTH": "الحد الأقصى {{length}} أحرف",
+    "MISMATCH": "كلمات المرور غير متطابقة",
+    "INVALID_PHONE": "صيغة رقم الهاتف غير صحيحة",
+    "STRONG_PASSWORD": "يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام ورموز",
+    "PATTERN_PASSWORD": "يجب أن تحتوي كلمة المرور على أحرف كبيرة وصغيرة وأرقام ورموز",
+    "INVALID": "حقل غير صالح"
+  },
+  "SHARED": {
+    "SELECT_OPTION": "اختر خياراً"
+  },
+  "ABOUT_SECTION": {
+    "LABEL": "عنا",
+    "TITLE": "نقدم <span class='text-maroon-600 dark:text-maroon-400'>أرقى</span> صناديق الهدايا لمناسباتكم <span class='text-maroon-600 dark:text-maroon-400'>الخاصة</span>",
+    "DESCRIPTION": "اجعل كل لحظة لا تُنسى مع صناديق الهدايا الفاخرة لدينا. تم اختيار كل صندوق وتقديمه بشكل جميل، وهو مليء بقطع منتقاة بعناية مصممة لتترك انطباعاً رائعاً. سواء كان ذلك لعيد ميلاد، أو زفاف، أو مجرد شكر بسيط، فقد صُممت صناديق الهدايا لدينا لتترك أثراً دائماً - لأن الإهداء المدروس يبدأ من هنا.",
+    "DISCOVER": "اكتشف المزيد",
+    "FEATURE_1": "أسعار تنافسية وتسوق سهل",
+    "FEATURE_2": "جودة ممتازة وتغليف أنيق",
+    "FEATURE_3": "مثالي لكل المناسبات",
+    "FEATURE_4": "توصيل سريع وموثوق"
+  },
+  "HERO_SECTION": {
+    "LEFT_BANNER": {
+      "TITLE": "هدايا مميزة لمن تحب",
+      "BADGE": "تبدأ من 10.99 ج.م",
+      "CTA": "تسوق الآن"
+    },
+    "MAIN_BANNERS": {
+      "1": {
+        "TITLE": "قلها بالزهور",
+        "SUBTITLE": "هدايا أنيقة لكل لحظة مميزة.",
+        "CTA": "أريد الشراء!"
+      },
+      "2": {
+        "TITLE": "هدايا مثالية له",
+        "SUBTITLE": "اكتشف مجموعتنا الفاخرة المختارة بعناية.",
+        "CTA": "تسوق المجموعة"
+      },
+      "3": {
+        "TITLE": "احتفل بفرح",
+        "SUBTITLE": "اجعلها ذكرى لا تُنسى مع المفاجأة المثالية.",
+        "CTA": "اكتشف"
+      },
+      "4": {
+        "TITLE": "حب ورومانسية",
+        "SUBTITLE": "عبر عن مشاعرك بصدق وجمال.",
+        "CTA": "عرض المزيد"
+      }
+    },
+    "BOTTOM_BANNERS": {
+      "1": {
+        "TITLE": "احتفل بها للأبد بهدية ستتذكرها دائمًا",
+        "BADGE": "زفاف",
+        "CTA": "تسوق المجموعة"
+      },
+      "2": {
+        "TITLE": "كرم بداية رحلتكم الجميلة معًا",
+        "BADGE": "خطوبة",
+        "CTA": "تسوق المجموعة"
+      },
+      "3": {
+        "TITLE": "ميز كل عام من الحب بمفاجأة ذات معنى",
+        "BADGE": "ذكرى سنوية",
+        "CTA": "تسوق المجموعة"
+      }
+    }
+  },
+  "HOME": {
+    "BEST_SELLER": {
+      "BADGE": "الأكثر مبيعاً",
+      "TITLE": "<span class='text-maroon-600 dark:text-soft-pink-300'>اكتشف</span> ما <span class='text-maroon-600 dark:text-soft-pink-300'>يشتريه</span> الجميع الآن",
+      "SUBTITLE": "لست متأكداً ماذا تختار؟ ابدأ بأفضل المبيعات لدينا، هذه هي الهدايا التي يعود عملاؤنا لشرائها مراراً. سواء كنت تحتفل بعيد ميلاد أو ذكرى سنوية أو زفاف، فإن أفضل اختياراتنا مضمونة لترك انطباع دائم.",
+      "CTA": "استكشف الهدايا",
+      "NO_DATA": "لا توجد منتجات الأكثر مبيعاً حالياً."
+    },
+    "FEATURES": {
+      "FREE_DELIVERY": {
+        "TITLE": "توصيل مجاني",
+        "SUBTITLE": "للطلبات فوق 120 جنيه"
+      },
+      "GET_REFUND": {
+        "TITLE": "استرجاع الأموال",
+        "SUBTITLE": "استرجاع خلال 30 يومًا"
+      },
+      "SAFE_PAYMENT": {
+        "TITLE": "دفع آمن",
+        "SUBTITLE": "دفع آمن بنسبة 100%"
+      },
+      "SUPPORT": {
+        "TITLE": "دعم 24/7",
+        "SUBTITLE": "تواصل معنا في أي وقت"
+      }
+    }
+  },
+  "FOOTER": {
+    "DISCOVER_WEBSITE": "اكتشف موقعنا",
+    "HOME": "الرئيسية",
+    "PRODUCTS": "المنتجات",
+    "CATEGORIES": "التصنيفات",
+    "OCCASIONS": "المناسبات",
+    "CONTACT": "اتصل بنا",
+    "ABOUT": "من نحن",
+    "TERMS_CONDITIONS": "الشروط والأحكام",
+    "PRIVACY_POLICY": "سياسة الخصوصية",
+    "FAQS": "الأسئلة الشائعة",
+    "GET": "احصل على قسيمة خصم ",
+    "DISCOUNT_VALUE": "20%",
+    "DISCOUNT_COUPON": "",
+    "SUBSCRIBE_NEWSLETTER": "من خلال الاشتراك في النشرة الإخبارية",
+    "ENTER_EMAIL": "أدخل بريدك الإلكتروني",
+    "SUBSCRIBE": "اشترك",
+    "APP_NAME": "روز للتجارة الإلكترونية",
+    "ALL_RIGHTS_RESERVED": "جميع الحقوق محفوظة | 2025"
+  },
+  "MOST_POPULAR": {
+    "MOST_POPULAR_TITLE": "الأكثر شهرة",
+    "VIEW_MORE": "عرض المزيد",
+    "ALL": "الكل",
+    "NO_PRODUCTS_FOUND": "لم يتم العثور على منتجات.",
+    "LOADING_PRODUCTS": "جاري تحميل المنتجات..."
+  },
+  "CATEGORIES_PAGE": {
+    "LABEL": "التصنيفات",
+    "TITLE": "تسوق حسب التصنيف",
+    "SUBTITLE": "اختر تصنيف الهدايا المناسب لعرض المنتجات المرتبطة به.",
+    "EMPTY_TITLE": "لا توجد تصنيفات متاحة",
+    "EMPTY_SUBTITLE": "ستظهر التصنيفات هنا عند توفرها.",
+    "PRODUCTS_COUNT": "{{count}} منتج"
+  },
+  "OCCASIONS_PAGE": {
+    "LABEL": "المناسبات",
+    "TITLE": "تسوق حسب المناسبة",
+    "SUBTITLE": "اختر مناسبة الهدايا المناسبة لعرض المنتجات المرتبطة بها.",
+    "EMPTY_TITLE": "لا توجد مناسبات متاحة",
+    "EMPTY_SUBTITLE": "ستظهر المناسبات هنا عند توفرها.",
+    "PRODUCTS_COUNT": "{{count}} منتج"
+  },
+  "PRODUCT_BADGES": {
+    "HOT": "الأكثر طلباً",
+    "NEW": "جديد",
+    "OUT_OF_STOCK": "نفد من المخزن"
+  },
+  "CURRENCY": "ج.م",
+  "PRODUCT_DETAILS": {
+    "LOADING": "جاري تحميل تفاصيل المنتج...",
+    "CURRENCY": "ج.م",
+    "LEFT_IN_STOCK": "قطعة متوفرة",
+    "OUT_OF_STOCK": "نفد من المخزن",
+    "RATING": "التقييم",
+    "RATINGS": "تقييمات",
+    "ADD_TO_WISHLIST": "إضافة لقائمة الأمنيات",
+    "ADD_TO_CART": "إضافة للسلة"
+  },
+  "PRODUCT_REVIEWS": {
+    "TITLE": "تقييمات المنتج",
+    "NO_REVIEWS": "لا توجد تقييمات بعد. كن أول من يشارك رأيه!",
+    "YOUR_RATING": "تقييمك:",
+    "REVIEW_TITLE": "العنوان",
+    "REVIEW_TITLE_PLACEHOLDER": "أدخل عنوان التقييم",
+    "REVIEW": "التقييم",
+    "REVIEW_PLACEHOLDER": "ما رأيك في هذا المنتج؟",
+    "LOGIN_TO_REVIEW": "يرجى تسجيل الدخول لإضافة تقييم",
+    "ADD_REVIEW": "إضافة تقييم"
+  },
+  "RELATED_PRODUCTS": {
+    "TITLE": "منتجات ذات صلة",
+    "NO_DATA": "لا توجد منتجات ذات صلة حالياً."
+  },
+  "Category": "التصنيف",
+  "Reset": "إعادة ضبط",
+  "Reset All": "إعادة ضبط الكل",
+  "Occasion": "المناسبة",
+  "Rating": "التقييم",
+  "Price": "السعر",
+  "from": "من",
+  "to": "إلى",
+  "There are no products in this Category": "لا توجد منتجات في هذا التصنيف",
+  "There are no products for this Occasion": "لا توجد منتجات لهذه المناسبة",
+  "There are no products with this Rating": "لا توجد منتجات بهذا التقييم",
+  "There are no products in this Price range": "لا توجد منتجات في هذا النطاق السعري",
+  "No products match the selected filters": "لا توجد منتجات تطابق الفلاتر المحددة",
+  "There are no products available": "لا توجد منتجات متاحة",
+  "PRODUCT_FILTERS": {
+    "TITLE": "الفلاتر",
+    "SUBTITLE": "خصص النتائج واعثر على الهدية المناسبة بسرعة.",
+    "ERROR_NEGATIVE": "لا يمكن أن يكون السعر أقل من صفر.",
+    "ERROR_RANGE": "الحد الأقصى للسعر يجب أن يكون أكبر من الحد الأدنى.",
+    "ACTIVE": "{{count}} فلاتر مفعلة",
+    "ALL_CATEGORIES": "كل التصنيفات",
+    "ALL_OCCASIONS": "كل المناسبات",
+    "PRICE_RANGE": "نطاق السعر",
+    "PRICE_HINT": "حرّك المؤشرين لتحديد الميزانية المناسبة.",
+    "MIN_PRICE": "الحد الأدنى",
+    "MAX_PRICE": "الحد الأقصى",
+    "OPEN": "الفلاتر",
+    "SHOW_TABLET": "إظهار الفلاتر",
+    "HIDE_TABLET": "إخفاء الفلاتر",
+    "APPLY": "تطبيق",
+    "RESET": "إعادة ضبط",
+    "RESET_ALL": "إعادة ضبط الكل"
+  },
+  "CART": {
+    "TITLE": "عربة التسوق",
+    "PRODUCTS_COUNT": "{{count}} منتجات",
+    "CLEAR_CART": "مسح العربة",
+    "CONTINUE_SHOPPING": "متابعة التسوق",
+    "EMPTY_MESSAGE": "عربة التسوق فارغة، هل تود تجربة التسوق؟",
+    "REMOVE_ITEM": "إزالة",
+    "RATING": "التقييم:",
+    "RATINGS_COUNT": "({{count}} تقييمات)",
+    "LIKED_PRODUCTS_TITLE": "منتجات قد تعجبك",
+    "LIKED_PRODUCT_NOT_FOUND": "لا توجد منتجات حالياً.",
+    "ADD_SUCCESS": "تم إضافة المنتج بنجاح",
+    "UPDATE_SUCCESS": "تم تحديث المنتج بنجاح",
+    "REMOVE_SUCCESS": "تم إزالة المنتج بنجاح",
+    "CLEAR_SUCCESS": "تم مسح العربة بنجاح",
+    "SUMMARY": "الملخص",
+    "COUPON_PLACEHOLDER": "كود الخصم",
+    "APPLY_BTN": "تطبيق الكوبون",
+    "COUPON_APPLIED": "تم تطبيق الكوبون بنجاح",
+    "NO_COUPON": "لا يوجد كوبونات مضافة",
+    "SUBTOTAL": "الإجمالي قبل الخصم",
+    "TOTAL_DISCOUNT": "الخصم",
+    "ORDER_TOTAL": "الإجمالي",
+    "PROCEED_CHECKOUT": "الدفع",
+    "CURRENCY": "جنيه",
+    "DISCOUNT": "خصم"
+  },
+  "WISHLIST": {
+    "TITLE": "قائمة أمنياتي",
+    "ITEMS_COUNT": "عنصر",
+    "EMPTY_TITLE": "قائمة أمنياتك فارغة",
+    "EMPTY_SUBTITLE": "تصفح منتجاتنا وأضف المفضلة لديك هنا لحفظها لوقت لاحق",
+    "BROWSE_PRODUCTS": "تصفح المنتجات",
+    "REMOVE": "إزالة",
+    "MOVE_TO_CART": "نقل إلى السلة",
+    "ADDED_TO_CART": "تم نقل المنتج إلى السلة بنجاح",
+    "REMOVED": "تمت الإزالة من قائمة الأمنيات",
+    "ADDED": "تمت الإضافة إلى قائمة الأمنيات",
+    "CONTINUE_SHOPPING": "مواصلة التسوق",
+    "PRODUCTS_YOU_MAY_LIKE": "منتجات قد تعجبك",
+    "NO_RECOMMENDATIONS": "لا توجد منتجات متاحة في الوقت الحالي."
+  },
+  "NOT_FOUND": {
+    "TITLE": "هل ضللت الطريق؟",
+    "DESCRIPTION": "الصفحة التي تبحث عنها قد تم نقلها أو لم تعد موجودة. دعنا نساعدك في العودة لتجد الهدية المثالية.",
+    "BACK_TO_HOME": "العودة للرئيسية",
+    "BROWSE_PRODUCTS": "تصفح المنتجات"
+  },
+  "CHECKOUT": {
+    "PAYMENT_METHOD": "طريقة الدفع",
+    "CASH_TITLE": "الدفع عند الاستلام",
+    "CASH_DESC": "ستدفع نقدًا عند استلام طلبك.",
+    "CARD_TITLE": "بطاقة الائتمان",
+    "CARD_DESC": "سيتم توجيهك بأمان إلى Stripe لإكمال عملية الدفع.",
+    "CHECKOUT_BTN": "إتمام الطلب",
+    "ORDER_SUCCESS": "تم تقديم الطلب بنجاح!",
+    "ORDER_FAILED": "فشل الدفع، يرجى المحاولة مرة أخرى أو اختيار طريقة أخرى"
+  },
+  "CONTACT_PAGE": {
+    "BADGE": "تواصل معنا",
+    "TITLE": "يسعدنا سماع رسالتك",
+    "SUBTITLE": "هل لديك سؤال عن طلبك أو ترغب في ترشيح هدية أو الاستفسار عن التوصيل؟ أرسل لنا رسالة وسنرد عليك في أقرب وقت.",
+    "SUCCESS_MESSAGE": "تم إرسال رسالتك بنجاح.",
+    "FORM": {
+      "NAME": "الاسم",
+      "NAME_PLACEHOLDER": "ادخل اسمك الكامل",
+      "EMAIL": "البريد الإلكتروني",
+      "EMAIL_PLACEHOLDER": "ادخل عنوان بريدك الإلكتروني",
+      "PHONE": "رقم الهاتف",
+      "PHONE_PLACEHOLDER": "ادخل رقم هاتفك",
+      "SUBJECT": "الموضوع",
+      "SUBJECT_PLACEHOLDER": "سؤال بخصوص توصيل الزهور",
+      "MESSAGE": "الرسالة",
+      "MESSAGE_PLACEHOLDER": "أرغب في معرفة إذا كنتم توصلون إلى منطقتي. الرمز البريدي 12345.",
+      "SUBMIT": "إرسال الرسالة"
+    },
+    "CARDS": {
+      "EMAIL": {
+        "TITLE": "الدعم عبر البريد",
+        "VALUE": "support@rose-store.com"
+      },
+      "PHONE": {
+        "TITLE": "الهاتف",
+        "VALUE": "+20 100 000 0000"
+      },
+      "HOURS": {
+        "TITLE": "مواعيد العمل",
+        "VALUE": "يوميًا من 9:00 صباحًا حتى 10:00 مساءً"
+      }
+    }
+  },
+  "ABOUT_PAGE": {
+    "BADGE": "من نحن",
+    "TITLE": "نصنع لحظات إهداء لا تُنسى",
+    "SUBTITLE": "نجمع بين الاختيار بعناية والتغليف الأنيق والتوصيل الموثوق لتكون كل هدية مميزة من أول نظرة حتى لحظة التسليم.",
+    "IMAGES": {
+      "ALT_2": "تغليف هدايا فاخر",
+      "ALT_3": "هدية احتفالية مع الزهور"
+    },
+    "CARDS": {
+      "QUALITY": {
+        "TITLE": "اختيارات عالية الجودة",
+        "DESCRIPTION": "نختار كل منتج بعناية ليلبي أعلى معايير الجودة ويقدم تجربة إهداء مميزة."
+      },
+      "PACKAGING": {
+        "TITLE": "تغليف أنيق",
+        "DESCRIPTION": "نصمم التغليف ليمنح المتلقي تجربة فتح هدية راقية ولا تُنسى."
+      },
+      "DELIVERY": {
+        "TITLE": "توصيل موثوق",
+        "DESCRIPTION": "شحن سريع وموثوق يضمن وصول هديتك في الوقت المناسب لكل مناسبة مهمة."
+      },
+      "SUPPORT": {
+        "TITLE": "دعم دائم",
+        "DESCRIPTION": "فريق الدعم معنا لمساعدتك من اختيار المنتج وحتى إتمام الطلب بنجاح."
+      }
+    }
+  },
+  "ORDERS": {
+    "TITLE": "الطلبات",
+    "TOTAL_ORDERS": "طلبات",
+    "TOTAL_PRICE": "إجمالي السعر",
+    "PAYMENT_METHOD": "طريقة الدفع",
+    "DELIVERY_STATUS": "حالة التوصيل",
+    "STATUS": "الحالة",
+    "ORDER_ITEMS": "عناصر الطلب",
+    "SHOW_ALL": "عرض الكل",
+    "SHOW_LESS": "عرض أقل",
+    "CREATED_AT": "تم الإنشاء في {{date}} الساعة {{time}}",
+    "PAID": "مدفوع",
+    "UNPAID": "غير مدفوع",
+    "CASH": "نقدًا",
+    "CARD": "بطاقة ائتمان",
+    "PENDING": "قيد الانتظار",
+    "DELIVERED": "تم التوصيل",
+    "CANCELLED": "ملغي",
+    "IN_PROGRESS": "قيد التنفيذ",
+    "DONE": "مكتمل",
+    "EMPTY_TITLE": "لا توجد طلبات بعد",
+    "EMPTY_SUBTITLE": "ستظهر هنا كل الطلبات التي أتممتها بنجاح. ابدأ التسوق وسنرتب طلباتك كلها في مكان واحد.",
+    "CONTINUE_SHOPPING": "تصفح المنتجات"
+  },
+  "ERRORS": {
+    "UNEXPECTED": "حدث خطأ غير متوقع",
+    "NETWORK": "خطأ في الشبكة: يرجى التحقق من اتصالك",
+    "SERVER": "خطأ في الخادم: يرجى المحاولة مرة أخرى لاحقاً",
+    "UNAUTHORIZED": "يرجى تسجيل الدخول أولاً",
+    "FORBIDDEN": "ليس لديك صلاحية الوصول إلى هذه الصفحة"
+  },
+  "PROFILE_PAGE": {
+    "UPLOAD_PHOTO": "رفع صورة",
+    "UPLOAD_HINT": "يمكنك رفع صورة بصيغة .jpg، .png، أو .gif بحجم أقصى 5 ميجابايت.",
+    "CHOOSE_FILE": "اختر ملف",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "الاسم الأخير",
+    "EMAIL": "البريد الإلكتروني",
+    "PHONE": "رقم الهاتف",
+    "GENDER": "النوع",
+    "DELETE_ACCOUNT": "حذف حسابي",
+    "SAVE_CHANGES": "حفظ التغييرات",
+    "OLD_PASSWORD": "كلمة المرور القديمة",
+    "NEW_PASSWORD": "كلمة المرور الجديدة",
+    "CONFIRM_PASSWORD": "تأكيد كلمة المرور الجديدة",
+    "CHANGE_PASSWORD": "تغيير كلمة المرور",
+    "ENTER_OLD_PASSWORD": "أدخل كلمة المرور الحالية",
+    "ENTER_NEW_PASSWORD": "أدخل كلمة المرور الجديدة",
+    "ENTER_CONFIRM_PASSWORD": "أعد إدخال كلمة المرور الجديدة",
+    "PHOTO_UPDATED": "تم تحديث الصورة بنجاح",
+    "PHOTO_UPDATE_FAILED": "فشل في تحديث الصورة",
+    "UPDATE_SUCCESS": "تم تحديث الملف الشخصي بنجاح",
+    "PASSWORD_UPDATE_SUCCESS": "تم تغيير كلمة المرور بنجاح"
+  }
+}

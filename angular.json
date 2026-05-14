@@ -1,0 +1,177 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "apps",
+  "projects": {
+    "E-commerce": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/E-commerce",
+      "sourceRoot": "apps/E-commerce/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@nx/angular:webpack-browser",
+          "options": {
+            "outputPath": "dist/apps/E-commerce",
+            "index": "apps/E-commerce/src/index.html",
+            "main": "apps/E-commerce/src/main.ts",
+            "tsConfig": "apps/E-commerce/tsconfig.app.json",
+            "allowedCommonJsDependencies": [
+              "google-libphonenumber"
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/E-commerce/public"
+              }
+            ],
+            "styles": [
+              "apps/E-commerce/src/styles.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/ngx-spinner/animations/triangle-skew-spin.css",
+              "node_modules/intl-tel-input/build/css/intlTelInput.css"
+            ],
+            "scripts": [
+              "node_modules/intl-tel-input/build/js/utils.js"
+            ],
+            "customWebpackConfig": {
+              "path": "apps/E-commerce/webpack.config.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kb",
+                  "maximumError": "10kb"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/E-commerce/webpack.prod.config.ts"
+              }
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "E-commerce:build:production"
+            },
+            "development": {
+              "buildTarget": "E-commerce:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "lint": {
+          "builder": "@nx/eslint:lint"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "apps/E-commerce/tsconfig.spec.json",
+            "karmaConfig": "apps/E-commerce/karma.conf.js",
+            "inlineStyleLanguage": "css",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/E-commerce/public"
+              }
+            ],
+            "styles": [
+              "apps/E-commerce/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "serve-static": {
+          "builder": "@nx/web:file-server",
+          "options": {
+            "buildTarget": "E-commerce:build",
+            "staticFilePath": "dist/apps/E-commerce/browser",
+            "spa": true
+          }
+        }
+      }
+    },
+  
+    "dashboard": {
+      "projectType": "application",
+      "root": "apps/dashboard",
+      "sourceRoot": "apps/dashboard/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@nx/angular:webpack-browser",
+          "options": {
+            "outputPath": "dist/apps/dashboard",
+            "index": "apps/dashboard/src/index.html",
+            "main": "apps/dashboard/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "apps/dashboard/tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "apps/dashboard/public"
+              }
+            ],
+            "styles": [
+              "apps/dashboard/src/styles.css"
+            ],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/dashboard/webpack.config.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kb",
+                  "maximumError": "8kb"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/dashboard/webpack.prod.config.ts"
+              }
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
+  }
+}

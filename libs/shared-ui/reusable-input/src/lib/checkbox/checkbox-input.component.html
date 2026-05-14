@@ -1,0 +1,42 @@
+<div class="flex flex-col gap-2">
+  <label class="checkbox-container group">
+    <div class="relative flex items-center justify-center">
+      <input
+        [id]="inputId()"
+        type="checkbox"
+        [checked]="value"
+        [disabled]="isDisabled"
+        [attr.aria-describedby]="describedBy"
+        [attr.aria-invalid]="Invalid"
+        (change)="toggle()"
+        class="peer sr-only"
+      />
+
+      <div class="checkbox-box"></div>
+
+      <svg
+        class="checkbox-tick"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="4"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    </div>
+
+    @if (label()) {
+    <span class="checkbox-label">
+      {{ label() }}
+    </span>
+    }
+  </label>
+  <lib-input-error
+    [control]="control"
+    [errorId]="errorId()"
+  ></lib-input-error>
+</div>

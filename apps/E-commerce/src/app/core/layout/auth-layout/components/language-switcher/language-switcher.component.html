@@ -1,0 +1,14 @@
+<div class="flex justify-end">
+  <button
+    type="button"
+    (click)="changeLanguage()"
+    [attr.aria-label]="
+      currentLang() === 'en'
+        ? 'Switch language to Arabic'
+        : 'Switch language to English'
+    "
+    class="text-zinc-700 text-sm font-medium cursor-pointer hover:text-maroon-400 dark:text-zinc-50 dark:hover:text-soft-pink-400 focus:outline-none focus:text-gray-700 dark:focus:text-gray-200"
+  >
+    {{ currentLang() === 'en' ? 'العربية' : 'English' }}
+  </button>
+</div>

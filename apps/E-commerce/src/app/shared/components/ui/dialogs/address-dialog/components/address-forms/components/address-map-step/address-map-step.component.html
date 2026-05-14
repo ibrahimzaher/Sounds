@@ -1,0 +1,49 @@
+<div class="space-y-6 animate-in duration-500 text-start">
+  <div class="flex items-center gap-3">
+    <lib-button
+      (buttonClick)="onBack()"
+      [ariaLabel]="'Go back to previous step'"
+      class="btn-arrow"
+      [icon]="isRtl() ? 'arrow-right' : 'arrow-left'"
+    >
+    </lib-button>
+
+    <h3 class="text-maroon-600 text-[24px] font-medium">
+      {{ 'ADDRESS_DIALOG.STEP_2_TITLE' | translate }}
+    </h3>
+  </div>
+
+  <div
+    class="relative w-full h-87.5 rounded-2xl overflow-hidden border-2 border-zinc-100 dark:border-zinc-700 shadow-sm"
+  >
+    <google-map
+      height="100%"
+      width="100%"
+      [center]="center()"
+      [zoom]="zoom()"
+      (mapClick)="onMapClick($event)"
+    >
+      <map-marker
+        [position]="markerPosition()"
+        [options]="markerOptions()"
+      ></map-marker>
+    </google-map>
+
+    <lib-button
+      type="button"
+      (buttonClick)="onFindLocation()"
+      class="absolute top-3 right-3 z-20"
+    >
+      <i class="pi pi-compass text-lg"></i>
+      {{ 'ADDRESS_DIALOG.FIND_LOCATION' | translate }}
+    </lib-button>
+  </div>
+
+  <lib-button (buttonClick)="onSubmit()" [block]="true" class="w-full">
+    {{
+      isEdit()
+        ? ('ADDRESS_DIALOG.SUBMIT_UPDATE' | translate)
+        : ('ADDRESS_DIALOG.SUBMIT_ADD' | translate)
+    }}
+  </lib-button>
+</div>

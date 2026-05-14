@@ -1,0 +1,109 @@
+{
+  "name": "E-commerce",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/E-commerce/src",
+  "tags": ["type:app"],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "index": "apps/E-commerce/src/index.html",
+        "outputPath": "dist/apps/E-commerce",
+        "main": "apps/E-commerce/src/main.ts",
+        "tsConfig": "apps/E-commerce/tsconfig.app.json",
+        "allowedCommonJsDependencies": ["google-libphonenumber"],
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/E-commerce/public"
+          }
+        ],
+        "styles": [
+          "apps/E-commerce/src/styles.css",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/ngx-toastr/toastr.css",
+          "node_modules/ngx-spinner/animations/triangle-skew-spin.css",
+          "node_modules/intl-tel-input/build/css/intlTelInput.css"
+        ],
+        "scripts": ["node_modules/intl-tel-input/build/js/utils.js"],
+        "customWebpackConfig": {
+          "path": "apps/E-commerce/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "1mb",
+              "maximumError": "2mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "10kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/angular:module-federation-dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "E-commerce:build:production"
+        },
+        "development": {
+          "buildTarget": "E-commerce:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "publicHost": "http://localhost:4200"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": ["zone.js", "zone.js/testing"],
+        "tsConfig": "apps/E-commerce/tsconfig.spec.json",
+        "karmaConfig": "apps/E-commerce/karma.conf.js",
+        "inlineStyleLanguage": "css",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/E-commerce/public"
+          }
+        ],
+        "styles": [
+          "apps/E-commerce/src/styles.css",
+          "node_modules/primeicons/primeicons.css"
+        ],
+        "scripts": []
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "E-commerce:build",
+        "staticFilePath": "dist/apps/E-commerce/browser",
+        "spa": true
+      }
+    }
+  }
+}

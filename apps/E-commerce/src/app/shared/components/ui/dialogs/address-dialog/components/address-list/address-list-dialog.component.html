@@ -1,0 +1,100 @@
+<div class="p-6">
+  <div
+    class="flex justify-between items-center border-b border-b-zinc-200 pb-3 mb-6"
+  >
+    <h2 class="text-[30px] font-bold text-zinc-800">
+      {{ 'ADDRESS_DIALOG.LIST_TITLE' | translate }}
+    </h2>
+
+    @if (addresses().length !== 0) {
+    <lib-button (buttonClick)="onAdd()" variant="secondary">
+      {{ 'ADDRESS_DIALOG.ADD_NEW_ADDRESS' | translate }}
+    </lib-button>
+    }
+  </div>
+
+  @if (addresses().length === 0) {
+  <div class="flex p-10 items-center justify-center">
+    <lib-button (buttonClick)="onAdd()" variant="secondary">
+      {{ 'ADDRESS_DIALOG.ADD_NEW_ADDRESS' | translate }}
+    </lib-button>
+  </div>
+  }
+
+  <div class="space-y-8 p-2">
+    @for (address of addresses(); track address._id) {
+    <div
+      role="button"
+      tabindex="0"
+      [attr.aria-pressed]="state.address()?._id === address._id"
+      [attr.aria-label]="'Select address in ' + address.city"
+      class="relative border rounded-2xl p-4 transition-all duration-300 group bg-white"
+      [class.border-maroon-600]="state.address()?._id === address._id"
+      [class.border-zinc-200]="state.address()?._id !== address._id"
+      (click)="state.address.set(address)"
+      (keydown.enter)="state.address.set(address)"
+      (keydown.space)="$event.preventDefault(); state.address.set(address)"
+    >
+      <span
+        class="absolute -top-3 start-4 bg-white px-2 text-maroon-600 font-semibold text-[18px]"
+      >
+        {{ address._id }}
+      </span>
+
+      <div class="flex justify-between items-center gap-4">
+        <div class="space-y-3 flex-1">
+          <div class="flex items-center gap-3">
+            <div
+              class="bg-emerald-500 w-8 h-8 rounded-full flex items-center justify-center text-white shrink-0"
+            >
+              <i class="pi pi-map-marker text-sm"></i>
+            </div>
+
+            <span class="font-bold text-[22px] text-zinc-800">
+              {{ address.city }}
+            </span>
+          </div>
+
+          <div class="inline-block bg-zinc-100 px-4 py-1.5 rounded-full">
+            <p class="text-zinc-600 font-medium text-[15px]">
+              {{ address.street }}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start mt-2 gap-6">
+          <div class="flex items-center gap-2 text-zinc-700">
+            <i class="pi pi-phone text-sm rotate-90"></i>
+            <span class="font-semibold text-[17px]">
+              {{ address.phone }}
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-2 rtl:-translate-x-6 ltr:translate-x-6">
+            <button
+              type="button"
+              [attr.aria-label]="'Edit address in ' + address.city"
+              (click)="onEdit(address, $event)"
+              class="h-11 w-11 rounded-full border border-zinc-200 bg-white flex items-center justify-center hover:bg-zinc-50 transition-colors shadow-sm"
+            >
+              <i
+                aria-hidden="true"
+                class="pi pi-pencil text-sm text-zinc-500"
+              ></i>
+            </button>
+
+            <button
+              type="button"
+              [attr.aria-label]="'Delete address in ' + address.city"
+              (click)="onDelete(address, $event)"
+              class="h-11 w-11 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors shadow-md"
+            >
+              <i aria-hidden="true" class="pi pi-trash text-sm text-white"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

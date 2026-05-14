@@ -1,0 +1,38 @@
+<form [formGroup]="form()" (ngSubmit)="onNext()" class="space-y-6 text-start">
+  <h3
+    class="text-maroon-600 text-[24px] font-medium border-b border-zinc-200 dark:border-zinc-700 pb-2"
+  >
+    {{ 'ADDRESS_DIALOG.STEP_1_TITLE' | translate }}
+  </h3>
+
+  <div class="space-y-2">
+    <lib-text-input
+      class="label-address"
+      formControlName="city"
+      [label]="'ADDRESS_DIALOG.CITY_LABEL' | translate"
+      [placeholder]="'ADDRESS_DIALOG.CITY_PLACEHOLDER' | translate"
+    ></lib-text-input>
+  </div>
+
+  <div class="space-y-2">
+    <lib-textarea-input
+      formControlName="street"
+      [label]="'ADDRESS_DIALOG.STREET_LABEL' | translate"
+      [placeholder]="'ADDRESS_DIALOG.STREET_PLACEHOLDER' | translate"
+      [rows]="4"
+    ></lib-textarea-input>
+  </div>
+
+  <div class="space-y-2">
+    <lib-phone-input
+      class="label-address"
+      formControlName="phone"
+      [label]="'ADDRESS_DIALOG.PHONE_LABEL' | translate"
+      [placeholder]="'ADDRESS_DIALOG.PHONE_PLACEHOLDER' | translate"
+    ></lib-phone-input>
+  </div>
+
+  <lib-button type="submit" [block]="true" [disabled]="form().invalid">
+    {{ 'ADDRESS_DIALOG.NEXT' | translate }}
+  </lib-button>
+</form>

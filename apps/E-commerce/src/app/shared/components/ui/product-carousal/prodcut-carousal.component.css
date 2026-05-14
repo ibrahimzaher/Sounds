@@ -1,0 +1,31 @@
+:host ::ng-deep .p-carousel-prev-button,
+:host ::ng-deep .p-carousel-next-button {
+  background-color: var(--color-maroon-500);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  transform: translateY(-100%);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+:host ::ng-deep .p-carousel-prev-button .p-icon,
+:host ::ng-deep .p-carousel-next-button .p-icon {
+  color: var(--color-maroon-50);
+}
+:host ::ng-deep .p-carousel-prev-button:hover .p-button,
+:host ::ng-deep .p-carousel-next-button:hover .p-button {
+  background-color: var(--color-maroon-600) !important;
+}
+:host ::ng-deep .p-carousel-prev-button:hover .p-icon,
+:host ::ng-deep .p-carousel-next-button:hover .p-icon {
+  color: var(--color-maroon-50) !important;
+}
+:host ::ng-deep .p-carousel-prev-button {
+  left: -15px;
+}
+:host ::ng-deep .p-carousel-next-button {
+  right: -15px;
+}
+

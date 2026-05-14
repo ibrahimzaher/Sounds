@@ -1,0 +1,139 @@
+<div
+  class="group relative flex flex-col h-full transition-all rounded-2xl bg-transparent"
+>
+  <div
+    class="absolute top-2 start-2 end-2 z-20 flex items-start justify-between"
+  >
+    <div class="relative min-w-10 h-10">
+      <button
+        type="button"
+        [attr.aria-label]="
+          isInWishlist()
+            ? 'Remove from wishlist: ' + product().title
+            : 'Add to wishlist: ' + product().title
+        "
+        [class.text-maroon-500]="!isInWishlist()"
+        [class.bg-white]="!isInWishlist()"
+        [class.text-white]="isInWishlist()"
+        [class.bg-zinc-800]="isInWishlist()"
+        (click)="addToWishList(); $event.stopPropagation()"
+        class="group/btn absolute start-0 top-0 flex items-center overflow-hidden cursor-pointer p-2.5 rounded-full transition-all duration-300 ease-in-out shadow-md border border-transparent max-w-10.5 hover:max-w-50"
+      >
+        <lucide-icon
+          [name]="isInWishlist() ? 'heart-minus' : 'heart-plus'"
+          [size]="ICON_SIZE"
+          [strokeWidth]="ICON_STROKE"
+          class="shrink-0"
+        ></lucide-icon>
+
+        <span
+          class="opacity-0 group-hover/btn:opacity-100 ms-0 group-hover/btn:ms-2 whitespace-nowrap transition-all duration-300 text-xs font-bold"
+        >
+          {{
+            isInWishlist() ? (REMOVE_WISH | translate) : (ADD_WISH | translate)
+          }}
+        </span>
+      </button>
+    </div>
+
+    <div
+      class="pointer-events-none flex max-w-[calc(100%-3rem)] shrink-0 flex-col items-end justify-end gap-1 pt-1 sm:max-w-none sm:flex-row sm:items-center sm:gap-1.5"
+    >
+      @if (hotProduct()) {
+      <span [class]="BADGE_BASE" class="bg-maroon-50 text-maroon-600">
+        {{ 'PRODUCT_BADGES.HOT' | translate }}
+      </span>
+      } @if (newProduct()) {
+      <span [class]="BADGE_BASE" class="bg-zinc-100 text-zinc-700">
+        {{ 'PRODUCT_BADGES.NEW' | translate }}
+      </span>
+      } @if (product().quantity <= 0) {
+      <span [class]="BADGE_BASE" class="bg-red-600 text-soft-pink-50">
+        {{ 'PRODUCT_BADGES.OUT_OF_STOCK' | translate }}
+      </span>
+      }
+    </div>
+  </div>
+
+  <div
+    class="aspect-square relative overflow-hidden rounded-2xl mb-3 bg-gray-50 group/image shrink-0"
+  >
+    <img
+      [src]="product().imgCover"
+      [alt]="product().title"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+    />
+
+    <div
+      class="absolute inset-0 bg-[#E65073]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center"
+    >
+      <button
+        type="button"
+        [attr.aria-label]="'View product details for ' + product().title"
+        (click)="showProductDetails(); $event.stopPropagation()"
+        class="bg-white cursor-pointer text-maroon-600 p-3 rounded-full shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 hover:bg-maroon-50"
+      >
+        <lucide-icon
+          name="eye"
+          [size]="EYE_ICON_SIZE"
+          [strokeWidth]="ICON_STROKE"
+        ></lucide-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="px-1 flex flex-col grow">
+    <h3
+      class="text-[1rem] rtl:text-end font-bold text-maroon-700 dark:text-soft-pink-200 line-clamp-2 h-10 mb-1 truncate-none leading-tight"
+    >
+      {{ product().title }}
+    </h3>
+
+    <div class="mt-auto flex items-center justify-between">
+      <div class="flex flex-col gap-1">
+        <div class="flex items-center gap-0.5">
+          @for (star of [1, 2, 3, 4, 5]; track star) {
+          <div class="relative flex items-center justify-center">
+            <i class="pi pi-star text-amber-500 text-[18px]"></i>
+            <i
+              class="pi pi-star-fill text-amber-500 text-[18px] absolute top-0 left-0"
+              [style.clip-path]="getStarClip(star)"
+            ></i>
+          </div>
+          }
+        </div>
+
+        @let discountPrice = product().priceAfterDiscount; @let originalPrice =
+        product().price; @let finalPrice = discountPrice ?? originalPrice;
+
+        <span
+          class="text-[1.25rem] font-medium text-maroon-700 dark:text-soft-pink-200 leading-none"
+        >
+          {{ finalPrice | number : '1.2-2' }} {{ 'CURRENCY' | translate }}
+
+          @if (discountPrice !== null && discountPrice < originalPrice) {
+          <span
+            class="text-zinc-600 dark:text-zinc-300 inline-block ms-1 line-through font-medium text-sm whitespace-nowrap"
+          >
+            {{ originalPrice | number : '1.2-2' }} {{ 'CURRENCY' | translate }}
+          </span>
+          }
+        </span>
+      </div>
+
+      <lib-button
+        (buttonClick)="addToCart()"
+        [disabled]="product().quantity === 0"
+        [ariaLabel]="'Add ' + product().title + ' to cart'"
+        class="shrink-0"
+      >
+        <lucide-icon
+          name="shopping-cart"
+          [size]="CART_ICON_SIZE"
+          [strokeWidth]="2.5"
+          color="white"
+        ></lucide-icon>
+      </lib-button>
+    </div>
+  </div>
+</div>

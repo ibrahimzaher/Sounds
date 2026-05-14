@@ -1,0 +1,52 @@
+:host {
+  display: block;
+}
+
+:host ::ng-deep .p-paginator {
+  background: transparent !important;
+  border: none !important;
+  gap: 8px;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page,
+:host ::ng-deep .p-paginator button {
+  border: 1px solid var(--color-zinc-100) !important;
+  border-radius: 8px !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  transition: all 0.2s ease-in-out !important;
+  color: #4b5563;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page:hover:not(.p-highlight),
+:host ::ng-deep .p-paginator button:not(.p-disabled):hover {
+  background-color: var(--color-maroon-600) !important;
+  color: white !important;
+  border-color: var(--color-maroon-50) !important;
+}
+
+:host ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page-selected {
+  background-color: var(--color-maroon-600) !important;
+  color: white !important;
+  border-color: var(--color-maroon-50) !important;
+}
+
+:host-context(.dark) ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page-selected {
+  background-color: var(--color-soft-pink-300) !important;
+  color: var(--color-zinc-700) !important;
+  border-color: var(--color-soft-pink-300) !important;
+}
+
+:host-context(.dark) ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page:hover:not(.p-highlight),
+:host-context(.dark) ::ng-deep .p-paginator button:not(.p-disabled):hover {
+  background-color: var(--color-soft-pink-300) !important;
+  color: var(--color-zinc-700) !important;
+  border-color: var(--color-soft-pink-300) !important;
+}
+
+:host-context(.dark) ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page,
+:host-context(.dark) ::ng-deep .p-paginator button {
+  background-color: var(--color-zinc-700);
+  border: none !important;
+  color: white;
+}

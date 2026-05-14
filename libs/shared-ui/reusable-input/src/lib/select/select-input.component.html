@@ -1,0 +1,46 @@
+<div class="input-wrapper">
+  @if (label()) {
+  <label [for]="inputId()" class="input-label">
+    {{ label() }}
+  </label>
+  }
+
+  <div class="relative w-full">
+    <p-select
+      [inputId]="inputId()"
+      [options]="options()"
+      [(ngModel)]="value"
+      optionLabel="label"
+      autofocus="false"
+      optionValue="value"
+      [ariaLabel]="label() || placeholder()"
+      [placeholder]="placeholder() || ('SHARED.SELECT_OPTION' | translate)"
+      [disabled]="isDisabled"
+      (onBlur)="onTouched()"
+      (onChange)="onValueChange($event.value)"
+      appendTo="body"
+      class="w-full"
+      [styleClass]="
+        'p-select-custom ' +
+        (Invalid ? 'input-status-error' : 'input-status-normal')
+      "
+    >
+      <ng-template pTemplate="dropdownicon">
+        <i-lucide
+          name="chevron-down"
+          size="18"
+          class="text-zinc-400"
+        ></i-lucide>
+      </ng-template>
+
+      <ng-template pTemplate="item" let-option>
+        <span class="text-sm">{{ option.label }}</span>
+      </ng-template>
+    </p-select>
+  </div>
+
+  <lib-input-error
+    [control]="control"
+    [errorId]="errorId()"
+  ></lib-input-error>
+</div>

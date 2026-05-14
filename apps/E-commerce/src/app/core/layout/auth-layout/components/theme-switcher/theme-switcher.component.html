@@ -1,0 +1,22 @@
+<button
+  type="button"
+  (click)="themeService.toggleTheme()"
+  class="text-zinc-700 cursor-pointer hover:text-maroon-400 dark:text-zinc-50 dark:hover:text-soft-pink-400 focus:outline-none transition-colors duration-200"
+  [attr.aria-label]="
+    themeService.theme() === Theme.LIGHT
+      ? 'Switch to dark theme'
+      : 'Switch to light theme'
+  "
+  [attr.aria-pressed]="themeService.theme() !== Theme.LIGHT"
+  [title]="
+    themeService.theme() === Theme.LIGHT
+      ? 'Switch to dark theme'
+      : 'Switch to light theme'
+  "
+>
+  @if (themeService.theme() === Theme.LIGHT) {
+  <lucide-icon [img]="Moon" class="w-6 h-6"></lucide-icon>
+  } @else {
+  <lucide-icon [img]="Sun" class="w-6 h-6"></lucide-icon>
+  }
+</button>

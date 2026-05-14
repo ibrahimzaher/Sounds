@@ -1,0 +1,35 @@
+<section>
+  <div class="mb-8">
+    <p
+      class="text-sm font-semibold uppercase tracking-[0.2em] text-soft-pink-500 dark:text-maroon-400"
+    >
+      {{ 'CONTACT_PAGE.BADGE' | translate }}
+    </p>
+    <h1
+      class="mt-2 text-3xl font-bold text-maroon-700 dark:text-soft-pink-200 sm:text-4xl"
+    >
+      {{ 'CONTACT_PAGE.TITLE' | translate }}
+    </h1>
+    <p class="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-300">
+      {{ 'CONTACT_PAGE.SUBTITLE' | translate }}
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 items-start gap-6 lg:grid-cols-5 lg:gap-8">
+    <aside class="space-y-4 lg:col-span-2">
+      @for (item of contactInfoItems; track item.titleKey) {
+      <app-contact-info-card
+        [icon]="item.icon"
+        [titleKey]="item.titleKey"
+        [valueKey]="item.valueKey"
+        [href]="
+          item.hrefPrefix ? item.hrefPrefix + (item.valueKey | translate) : ''
+        "
+        [forceLtr]="item.forceLtr || false"
+      ></app-contact-info-card>
+      }
+    </aside>
+
+    <app-contact-form></app-contact-form>
+  </div>
+</section>

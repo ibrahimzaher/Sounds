@@ -1,0 +1,77 @@
+<div>
+  <h1
+    class="text-3xl font-bold mb-8 text-maroon-600 dark:text-maroon-400"
+    id="profile-heading"
+  >
+    {{ 'NAVBAR.ACCOUNT_MENU.PROFILE' | translate }}
+  </h1>
+
+  <div class="flex flex-col md:flex-row gap-8">
+    <!-- Sidebar -->
+    <nav class="w-full md:w-1/4" aria-labelledby="profile-heading">
+      <ul class="flex flex-col gap-2" role="list">
+        <li>
+          <a
+            routerLink="/profile"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="bg-black dark:bg-zinc-800 text-white hover:text-gray-700 dark:hover:text-white"
+            class="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors text-gray-700 dark:text-gray-300 font-medium cursor-pointer"
+            [attr.aria-label]="'NAVBAR.ACCOUNT_MENU.PROFILE' | translate"
+          >
+            <i class="pi pi-user text-lg" aria-hidden="true"></i>
+            {{ 'NAVBAR.ACCOUNT_MENU.PROFILE' | translate }}
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/profile/change-password"
+            routerLinkActive="bg-black dark:bg-zinc-800 text-white hover:text-gray-700 dark:hover:text-white"
+            class="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors text-gray-700 dark:text-gray-300 font-medium cursor-pointer"
+            [attr.aria-label]="'PROFILE_PAGE.CHANGE_PASSWORD' | translate"
+          >
+            <i class="pi pi-lock text-lg" aria-hidden="true"></i>
+            {{ 'PROFILE_PAGE.CHANGE_PASSWORD' | translate }}
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/profile/orders"
+            routerLinkActive="bg-black dark:bg-zinc-800 text-white hover:text-gray-700 dark:hover:text-white"
+            class="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors text-gray-700 dark:text-gray-300 font-medium cursor-pointer"
+            [attr.aria-label]="'NAVBAR.ACCOUNT_MENU.ORDERS' | translate"
+          >
+            <i class="pi pi-shopping-cart text-lg" aria-hidden="true"></i>
+            {{ 'NAVBAR.ACCOUNT_MENU.ORDERS' | translate }}
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/profile/addresses"
+            routerLinkActive="bg-black dark:bg-zinc-800 text-white hover:text-gray-700 dark:hover:text-white"
+            class="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors text-gray-700 dark:text-gray-300 font-medium cursor-pointer"
+            [attr.aria-label]="'NAVBAR.ACCOUNT_MENU.ADDRESSES' | translate"
+          >
+            <i class="pi pi-map-marker text-lg" aria-hidden="true"></i>
+            {{ 'NAVBAR.ACCOUNT_MENU.ADDRESSES' | translate }}
+          </a>
+        </li>
+      </ul>
+
+      <div class="mt-auto pt-8">
+        <button
+          (click)="logout()"
+          class="flex items-center gap-3 px-4 py-3 text-maroon-600 hover:text-maroon-700 dark:hover:text-maroon-400 transition-colors font-medium cursor-pointer"
+          [attr.aria-label]="'NAVBAR.ACCOUNT_MENU.LOGOUT' | translate"
+        >
+          <i class="pi pi-sign-out text-lg" aria-hidden="true"></i>
+          {{ 'NAVBAR.ACCOUNT_MENU.LOGOUT' | translate }}
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="w-full md:w-3/4" aria-live="polite">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="w-full flex flex-col gap-3 items-center">
+  <div [dir]="'ltr'" [class.invalid-otp]="Invalid">
+    <ng-otp-input
+      (onInputChange)="onOtpChange($event)"
+      [config]="config"
+    ></ng-otp-input>
+  </div>
+  <lib-input-error [control]="control"></lib-input-error>
+</div>

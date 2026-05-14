@@ -1,0 +1,61 @@
+<div
+  class="rounded-2xl border border-zinc-100 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60 sm:p-6 lg:p-8"
+>
+  <form
+    [formGroup]="contactForm"
+    (ngSubmit)="submitContactForm()"
+    class="space-y-4"
+  >
+    <div class="grid gap-4 sm:grid-cols-2">
+      <lib-text-input
+        formControlName="name"
+        [label]="'CONTACT_PAGE.FORM.NAME' | translate"
+        [placeholder]="'CONTACT_PAGE.FORM.NAME_PLACEHOLDER' | translate"
+        type="text"
+      />
+
+      <lib-text-input
+        formControlName="email"
+        [label]="'CONTACT_PAGE.FORM.EMAIL' | translate"
+        [placeholder]="'CONTACT_PAGE.FORM.EMAIL_PLACEHOLDER' | translate"
+        type="email"
+      />
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <lib-phone-input
+        formControlName="phone"
+        [label]="'CONTACT_PAGE.FORM.PHONE' | translate"
+        [placeholder]="'CONTACT_PAGE.FORM.PHONE_PLACEHOLDER' | translate"
+      />
+      <lib-text-input
+        formControlName="subject"
+        [label]="'CONTACT_PAGE.FORM.SUBJECT' | translate"
+        [placeholder]="'CONTACT_PAGE.FORM.SUBJECT_PLACEHOLDER' | translate"
+        type="text"
+      />
+    </div>
+    <div class="grid gap-4">
+      <lib-textarea-input
+        formControlName="message"
+        [label]="'CONTACT_PAGE.FORM.MESSAGE' | translate"
+        [placeholder]="'CONTACT_PAGE.FORM.MESSAGE_PLACEHOLDER' | translate"
+        [rows]="4"
+      ></lib-textarea-input>
+    </div>
+
+    <div class="pt-2">
+      <lib-button
+        type="submit"
+        [loading]="isSubmitting()"
+        [disabled]="isSubmitting()"
+        [block]="true"
+        [icon]="isRtl() ? 'arrow-left' : 'arrow-right'"
+        [iconPos]="'right'"
+        size="lg"
+      >
+        {{ 'CONTACT_PAGE.FORM.SUBMIT' | translate }}
+      </lib-button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,10 @@
+<section>
+  <app-heading-title [title]="'RELATED_PRODUCTS.TITLE' | translate" />
+  <div class="px-3">
+    <app-prodcut-carousal
+      [responsiveOptions]="responsiveOptions()"
+      [products]="products()"
+      [notFound]="'RELATED_PRODUCTS.NO_DATA' | translate"
+    />
+  </div>
+</section>

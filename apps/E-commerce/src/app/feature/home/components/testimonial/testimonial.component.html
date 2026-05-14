@@ -1,0 +1,70 @@
+<section class="text-center">
+  <h2
+    class="uppercase text-maroon-600 dark:text-maroon-300 font-bold text-[1rem] mb-2"
+  >
+    {{ 'TESTIMONIALS.TITLE' | translate }}
+  </h2>
+
+  <app-heading-title
+    class="mb-6 block sm:mb-8"
+    [title]="'TESTIMONIALS.HEADING' | translate"
+  ></app-heading-title>
+  @if (isLoading()) {
+  <div class="text-zinc-400 text-2xl">
+    Loading testimonials... <i class="pi pi-spin pi-spinner"></i>
+  </div>
+  } @else {
+  <div
+    class="bg-maroon-50 animate-fade-up opacity-0 dark:bg-zinc-700 flex flex-wrap justify-center gap-12 p-10"
+  >
+    @for (testimonial of testimonials(); track testimonial._id) {
+
+    <div
+      class="relative animate-fade-up opacity-0 bg-white rounded-2xl p-8 shadow-sm max-w-sm flex-1 min-w-75 mt-10 flex flex-col items-center"
+      [style.animation-delay]="$index * 150 + 'ms'"
+    >
+      <div
+        class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 border-4 border-white rounded-full overflow-hidden shadow-md"
+      >
+        <img
+          [src]="testimonial.user.photo"
+          class="w-full h-full object-cover"
+          alt="user photo"
+        />
+      </div>
+
+      <span class="font-semibold text-zinc-800 block mb-2 mt-8">
+        {{ testimonial.user.firstName }} {{ testimonial.user.lastName }}
+      </span>
+
+      <div class="flex items-center justify-center mb-4">
+        @for (star of stars; track star) {
+        <div class="relative">
+          <i
+            [class.pi-star-fill]="testimonial.rating >= star"
+            [class.pi-star]="testimonial.rating < star"
+            class="pi text-amber-400 text-[18px]"
+          ></i>
+        </div>
+        }
+      </div>
+
+      <p class="font-medium text-zinc-800 mb-10 leading-relaxed">
+        {{ testimonial.content }}
+      </p>
+
+      <span
+        class="absolute bottom-5 left-1/2 -translate-x-1/2 font-medium text-[12px] text-zinc-600 dark:text-zinc-300"
+      >
+        {{ testimonial.createdAt | date }}
+      </span>
+    </div>
+    }@empty {
+    <div class="flex flex-col items-center py-10 animate-fade-up text-zinc-700">
+      <i class="pi pi-comments text-4xl mb-3"></i>
+      <p>{{ 'TESTIMONIALS.NO_DATA' | translate }}</p>
+    </div>
+    }
+  </div>
+  }
+</section>

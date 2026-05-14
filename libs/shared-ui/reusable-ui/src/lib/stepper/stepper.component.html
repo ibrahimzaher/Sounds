@@ -1,0 +1,29 @@
+<nav class="flex items-center justify-center py-6" aria-label="Checkout steps">
+  <div class="flex w-full max-w-xl items-center justify-between px-4">
+    @for (step of steps(); track $index; let i = $index) {
+      <!-- Step indicator -->
+      <div class="flex flex-col items-center">
+        <div
+          class="relative flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 pointer-events-none"
+          [ngClass]="{
+            'bg-maroon-600 text-white': currentStep() >= i + 1,
+            'bg-zinc-200 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400': currentStep() < i + 1
+          }"
+          [attr.aria-current]="currentStep() === i + 1 ? 'step' : null"
+        >
+          {{ i + 1 }}
+        </div>
+      </div>
+
+      <!-- Connector line (all except last step) -->
+      @if ($index < steps().length - 1) {
+        <div class="mx-2 h-1.5 flex-1 rounded-full bg-zinc-200 dark:bg-zinc-800 overflow-hidden min-w-[50px] sm:min-w-[100px]">
+          <div
+            class="h-full rounded-full bg-maroon-600 transition-all duration-500 ease-in-out"
+            [style.width.%]="currentStep() > i + 1 ? 100 : 0"
+          ></div>
+        </div>
+      }
+    }
+  </div>
+</nav>

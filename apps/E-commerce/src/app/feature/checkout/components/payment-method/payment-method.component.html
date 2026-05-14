@@ -1,0 +1,195 @@
+<section class="space-y-6 sm:space-y-8" aria-labelledby="payment-heading">
+  <div class="flex items-center gap-3 sm:gap-4">
+    <button
+      (click)="onBack()"
+      type="button"
+      aria-label="Go back to previous step"
+      class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-600 transition-colors dark:bg-zinc-800 dark:text-zinc-400 focus-visible:ring-2 focus-visible:ring-maroon-600 focus-visible:outline-none"
+    >
+      <lucide-angular
+        name="chevron-left"
+        [size]="18"
+        aria-hidden="true"
+      ></lucide-angular>
+    </button>
+    <h3
+      id="payment-heading"
+      class="text-2xl sm:text-4xl font-black text-zinc-900 dark:text-white"
+    >
+      {{ ('CHECKOUT.PAYMENT_METHOD' | translate) || 'Payment Method' }}
+    </h3>
+  </div>
+
+  <div
+    role="radiogroup"
+    [attr.aria-label]="
+      ('CHECKOUT.PAYMENT_METHOD' | translate) || 'Select a payment method'
+    "
+    class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2"
+  >
+    <div
+      role="radio"
+      tabindex="0"
+      [attr.aria-checked]="selectedMethod() === 'cash'"
+      aria-labelledby="cash-title"
+      aria-describedby="cash-desc"
+      (click)="selectMethod('cash')"
+      (keydown.enter)="selectMethod('cash')"
+      (keydown.space)="$event.preventDefault(); selectMethod('cash')"
+      class="group relative cursor-pointer overflow-hidden rounded-4xl sm:rounded-[40px] border-2 p-6 sm:p-10 transition-all duration-500 focus-visible:ring-4 focus-visible:ring-maroon-600/20 focus-visible:outline-none"
+      [ngClass]="{
+        'border-maroon-600 bg-maroon-50/10 shadow-xl shadow-maroon-600/10':
+          selectedMethod() === 'cash',
+        'border-zinc-100 bg-white dark:border-zinc-800 dark:bg-zinc-900/40':
+          selectedMethod() !== 'cash'
+      }"
+    >
+      <div
+        class="flex flex-row items-center gap-5 text-left sm:flex-col sm:items-center sm:text-center"
+      >
+        <div
+          class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 sm:mb-8 sm:h-24 sm:w-24 sm:rounded-3xl"
+          aria-hidden="true"
+          [ngClass]="{
+            'bg-maroon-600 text-white rotate-3 scale-105 sm:scale-110':
+              selectedMethod() === 'cash',
+            'bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500':
+              selectedMethod() !== 'cash'
+          }"
+        >
+          <lucide-angular
+            name="banknote"
+            [size]="32"
+            class="sm:hidden"
+          ></lucide-angular>
+          <lucide-angular
+            name="banknote"
+            [size]="48"
+            class="hidden sm:block"
+          ></lucide-angular>
+        </div>
+
+        <div>
+          <h4
+            id="cash-title"
+            class="text-lg sm:text-2xl font-black text-zinc-900 dark:text-white"
+          >
+            {{ ('CHECKOUT.CASH_TITLE' | translate) || 'Cash on Delivery' }}
+          </h4>
+          <p
+            id="cash-desc"
+            class="mt-1 sm:mt-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed"
+          >
+            {{
+              ('CHECKOUT.CASH_DESC' | translate) || 'Pay in cash upon delivery.'
+            }}
+          </p>
+        </div>
+      </div>
+
+      @if (selectedMethod() === 'cash') {
+      <ng-container *ngTemplateOutlet="selectionIndicator"></ng-container>
+      }
+    </div>
+
+    <div
+      role="radio"
+      tabindex="0"
+      [attr.aria-checked]="selectedMethod() === 'card'"
+      aria-labelledby="card-title"
+      aria-describedby="card-desc"
+      (click)="selectMethod('card')"
+      (keydown.enter)="selectMethod('card')"
+      (keydown.space)="$event.preventDefault(); selectMethod('card')"
+      class="group relative cursor-pointer overflow-hidden rounded-4xl sm:rounded-[40px] border-2 p-6 sm:p-10 transition-all duration-500 focus-visible:ring-4 focus-visible:ring-maroon-600/20 focus-visible:outline-none"
+      [ngClass]="{
+        'border-maroon-600 bg-maroon-50/10 shadow-xl shadow-maroon-600/10':
+          selectedMethod() === 'card',
+        'border-zinc-100 bg-white dark:border-zinc-800 dark:bg-zinc-900/40':
+          selectedMethod() !== 'card'
+      }"
+    >
+      <div
+        class="flex flex-row items-center gap-5 text-left sm:flex-col sm:items-center sm:text-center"
+      >
+        <div
+          class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 sm:mb-8 sm:h-24 sm:w-24 sm:rounded-3xl"
+          aria-hidden="true"
+          [ngClass]="{
+            'bg-maroon-600 text-white -rotate-3 scale-105 sm:scale-110':
+              selectedMethod() === 'card',
+            'bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500':
+              selectedMethod() !== 'card'
+          }"
+        >
+          <lucide-angular
+            name="credit-card"
+            [size]="32"
+            class="sm:hidden"
+          ></lucide-angular>
+          <lucide-angular
+            name="credit-card"
+            [size]="48"
+            class="hidden sm:block"
+          ></lucide-angular>
+        </div>
+
+        <div>
+          <h4
+            id="card-title"
+            class="text-lg sm:text-2xl font-black text-zinc-900 dark:text-white"
+          >
+            {{ ('CHECKOUT.CARD_TITLE' | translate) || 'Credit Card' }}
+          </h4>
+          <p
+            id="card-desc"
+            class="mt-1 sm:mt-4 text-xs sm:text-sm font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed"
+          >
+            {{
+              ('CHECKOUT.CARD_DESC' | translate) || 'Secure redirect to Stripe.'
+            }}
+          </p>
+        </div>
+      </div>
+
+      @if (selectedMethod() === 'card') {
+      <ng-container *ngTemplateOutlet="selectionIndicator"></ng-container>
+      }
+    </div>
+  </div>
+
+  <div class="pt-4 sm:pt-8 flex justify-end">
+    <lib-button
+      [loading]="isLoading()"
+      [disabled]="isLoading() || !selectedMethod()"
+      [icon]="isRtl() ? 'arrow-left' : 'arrow-right'"
+      [iconPos]="'right'"
+      [ariaLabel]="
+        ('CHECKOUT.CHECKOUT_BTN' | translate) || 'Proceed to checkout'
+      "
+      class="sm:min-w-40 sm:w-auto"
+      (buttonClick)="onCheckout()"
+    >
+      {{ ('CHECKOUT.CHECKOUT_BTN' | translate) || 'Checkout' }}
+    </lib-button>
+  </div>
+</section>
+
+<ng-template #selectionIndicator>
+  <div class="absolute right-4 top-4 sm:right-6 sm:top-6" aria-hidden="true">
+    <div
+      class="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-maroon-600 shadow-lg"
+    >
+      <lucide-angular
+        name="check"
+        [size]="12"
+        class="text-white font-bold sm:hidden"
+      ></lucide-angular>
+      <lucide-angular
+        name="check"
+        [size]="16"
+        class="text-white font-bold hidden sm:block"
+      ></lucide-angular>
+    </div>
+  </div>
+</ng-template>

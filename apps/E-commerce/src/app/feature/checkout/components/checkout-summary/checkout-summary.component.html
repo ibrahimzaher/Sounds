@@ -1,0 +1,103 @@
+<section class="rounded-2xl text-zinc-800 dark:text-zinc-100">
+  <h3 class="text-[30px] font-semibold mb-4">
+    {{ 'CART.SUMMARY' | translate }}
+  </h3>
+
+  <div class="space-y-6">
+    <!-- Coupon Form -->
+    <form
+      [formGroup]="couponForm"
+      (ngSubmit)="applyCoupon()"
+      class="flex gap-2"
+    >
+      <div class="flex-1">
+        <label for="checkout-coupon-code" class="sr-only">
+          {{ 'CART.COUPON_PLACEHOLDER' | translate }}
+        </label>
+        <lib-text-input
+          id="checkout-coupon-code"
+          formControlName="code"
+          class="w-full"
+          placeholder="{{ 'CART.COUPON_PLACEHOLDER' | translate }}"
+        />
+      </div>
+
+      <lib-button
+        type="submit"
+        [loading]="isApplyingCoupon()"
+        [disabled]="isApplyingCoupon() || !hasItems()"
+        [icon]="'ticket-percent'"
+        class="shrink-0"
+      >
+        <span class="hidden sm:inline">{{ 'CART.APPLY_BTN' | translate }}</span>
+      </lib-button>
+    </form>
+
+    <!-- Coupon Status -->
+    <div
+      class="rounded-xl border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-8 dark:border-zinc-800 dark:bg-zinc-900/30"
+    >
+      @if (lastAppliedCoupon()) {
+      <div class="flex flex-col items-center justify-center text-center" aria-live="polite">
+        <p class="text-sm font-bold text-maroon-600 uppercase tracking-wide">
+          {{ ('CART.COUPON_APPLIED' | translate) || 'Coupon Applied!' }}
+        </p>
+        <p class="mt-1 text-lg font-black text-zinc-900 dark:text-white">
+          -{{ lastAppliedCoupon()!.discountAmount | number : '1.0-2' }}
+          {{ 'CURRENCY' | translate }}
+        </p>
+      </div>
+      } @else {
+      <div class="flex items-center justify-center text-center" aria-live="polite">
+        <p class="text-zinc-400 dark:text-zinc-500 italic">
+          {{ 'CART.NO_COUPON' | translate }}
+        </p>
+      </div>
+      }
+    </div>
+
+    <!-- Pricing -->
+    <div class="space-y-4 pt-4 border-t border-zinc-100 dark:border-zinc-800">
+      <div
+        class="flex items-center justify-between text-zinc-600 dark:text-zinc-400"
+      >
+        <span class="font-medium">{{ 'CART.SUBTOTAL' | translate }}</span>
+        <span class="font-bold text-zinc-900 dark:text-white">
+          {{ subtotal() | number : '1.0-2' }} {{ 'CURRENCY' | translate }}
+        </span>
+      </div>
+
+      <div class="flex items-start justify-between pt-2">
+        <div class="flex flex-col">
+          <span class="text-2xl font-black text-zinc-900 dark:text-white">{{
+            'CART.ORDER_TOTAL' | translate
+          }}</span>
+          @if (totalDiscountAmount() > 0) {
+          <span class="text-xs font-bold text-maroon-600">
+            {{ discountPercent() }}%
+            {{ ('CART.DISCOUNT' | translate) || 'Discount' }}
+          </span>
+          }
+        </div>
+        <span class="text-2xl font-black text-maroon-600">
+          {{ total() | number : '1.0-2' }} {{ 'CURRENCY' | translate }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+@if (showCheckoutButton()) {
+<div class="my-4">
+  <lib-button
+    [block]="true"
+    [disabled]="!hasItems()"
+    [icon]="isRtl() ? 'move-left' : 'move-right'"
+    [iconPos]="'right'"
+    size="lg"
+    routerLink="/checkout"
+  >
+    {{ 'CART.PROCEED_CHECKOUT' | translate }}
+  </lib-button>
+</div>
+}

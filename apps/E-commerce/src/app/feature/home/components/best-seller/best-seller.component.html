@@ -1,0 +1,43 @@
+<section>
+  <div>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-8 xl:gap-10">
+      <!-- Left Text Block -->
+      <div class="flex h-full flex-col gap-4 lg:col-span-1">
+        <span
+          class="text-maroon-600 font-bold text-xs md:text-sm uppercase tracking-widest"
+        >
+          {{ 'HOME.BEST_SELLER.BADGE' | translate }}
+        </span>
+        <h2
+          class="text-2xl md:text-3xl lg:text-[2.1rem] font-bold leading-tight text-maroon-700 dark:text-white transition-colors duration-300"
+          [innerHTML]="'HOME.BEST_SELLER.TITLE' | translate"
+        ></h2>
+        <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
+          {{ 'HOME.BEST_SELLER.SUBTITLE' | translate }}
+        </p>
+        <div class="mt-2 w-fit lg:mt-auto">
+          <lib-button
+            routerLink="/products"
+            variant="primary"
+            size="md"
+            [icon]="ctaArrowIcon()"
+            iconPos="right"
+          >
+            {{ 'HOME.BEST_SELLER.CTA' | translate }}
+          </lib-button>
+        </div>
+      </div>
+
+      <!-- Right Carousel -->
+
+      <div class="relative min-w-0 w-full px-3 lg:col-span-3">
+        <app-prodcut-carousal
+          [products]="bestSellers()"
+          [responsiveOptions]="responsiveOptions"
+          [numVisible]="3"
+          [notFound]="'HOME.BEST_SELLER.NO_DATA' | translate"
+        />
+      </div>
+    </div>
+  </div>
+</section>

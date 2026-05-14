@@ -1,0 +1,29 @@
+<section>
+  @if (allProducts().length > 0) {
+  <div class="grid grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-5">
+    @for (product of allProducts(); track product._id) {
+    <app-product-card [product]="product"></app-product-card>
+    }
+  </div>
+
+  @if (showPaginator()) {
+  <div class="flex justify-center mt-10">
+    <app-paginator
+      [first]="first()"
+      [rows]="rows()"
+      [totalRecords]="totalProducts()"
+      (pageChange)="onPageChange($event)"
+    ></app-paginator>
+  </div>
+  } } @else if (!isLoading()) {
+  <div class="flex flex-col items-center justify-center py-24 text-center">
+    <lucide-icon
+      [img]="SearchXIcon"
+      [size]="120"
+      [strokeWidth]="1"
+      class="text-zinc-300 mb-6"
+    ></lucide-icon>
+    <p class="text-[18px] text-zinc-400">{{ emptyMessageKey() | translate }}</p>
+  </div>
+  }
+</section>

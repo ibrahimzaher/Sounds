@@ -1,0 +1,528 @@
+{
+  "HELLO": "Hello",
+  "WELCOME": "Welcome to E-commerce",
+  "SWITCH_LANGUAGE": "Switch Language",
+  "ADD_WISH": "Add to wishlist",
+  "REMOVE_WISH": "Remove from wishlist",
+  "AUTH": {
+    "LOGIN": {
+      "TITLE": "Welcome back!",
+      "FOOTER_TEXT": "Don't have an account yet?",
+      "FOOTER_LINK": "Create one now!",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "user@example.com",
+      "PASSWORD": "Password",
+      "PASSWORD_PLACEHOLDER": "********",
+      "REMEMBER_ME": "Remember me",
+      "FORGOT_PASSWORD": "Forgot your password?",
+      "SUBMIT": "Login"
+    },
+    "REGISTER": {
+      "TITLE": "Become part of our family!",
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "EMAIL": "Email",
+      "PHONE": "Phone",
+      "GENDER": "Gender",
+      "MALE": "Male",
+      "FEMALE": "Female",
+      "PASSWORD": "Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "SUBMIT": "Create Account",
+      "FOOTER_TEXT": "Already have an account?",
+      "FOOTER_LINK": "Login now!",
+      "SUCCESS": "Your account has been successfully created. You can now log in."
+    },
+    "FORGOT_PASSWORD": {
+      "TITLE": "Forgot Password?",
+      "DESCRIPTION": "Worry not, we'll send you instructions to help you reset it.",
+      "FOOTER_TEXT": "Remember your password?",
+      "FOOTER_LINK": "Login now!"
+    },
+    "OTP": {
+      "TITLE": "Enter the OTP Code",
+      "DESCRIPTION": "We have sent a 6-digit code to",
+      "EDIT": "Edit",
+      "VERIFY": "Verify OTP",
+      "SEND_NEW": "Send a new code",
+      "SUCCESS_RESEND": "A new OTP code has been sent to your email",
+      "FOOTER_TEXT": "Need help?",
+      "FOOTER_LINK": "Contact us"
+    },
+    "RESET_PASSWORD": {
+      "TITLE": "Create a new password",
+      "SUBTITLE": "Set a strong password to secure your account.",
+      "PASSWORD_LABEL": "Password",
+      "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+      "SUBMIT": "Reset Password",
+      "FOOTER_TEXT": "Need help?",
+      "FOOTER_LINK": "Contact us",
+      "SUCCESS": "Your password has been successfully reset.",
+      "ERROR": "Something went wrong. Please try again."
+    }
+  },
+  "NAVBAR": {
+    "LOGIN": "Login",
+    "SEARCH": "What awesome gift are you looking for?",
+    "SEARCH_RESULTS": {
+      "LOADING": "Searching products...",
+      "NO_RESULTS": "No products found.",
+      "NO_RECOMMENDATIONS": "No products available at the moment.",
+      "PRODUCTS_YOU_MAY_LIKE": "Products you may like:",
+      "CLEAR": "Clear search",
+      "SEARCH_ARIA": "Search products",
+      "RATING": "Rating",
+      "RATINGS_COUNT": "({{count}} ratings)"
+    },
+    "DELIVERTO": "Deliver to:",
+    "DELIVERY_CITY": "Cairo",
+    "ADD_ADDRESS": "Add Address",
+    "HELLO": "Hello",
+    "ACCOUNT_MENU": {
+      "PROFILE": "My Profile",
+      "ADDRESSES": "My Addresses",
+      "ORDERS": "My Orders",
+      "DASHBOARD": "Dashboard",
+      "LOGOUT": "Log out"
+    },
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "OCCASIONS": "Occasions",
+    "CONTACT": "Contact",
+    "ABOUT": "About",
+    "ABOUT_US": "About Us",
+    "CART.LOGIN_TO_ACCESS": "Please login to access your cart",
+    "WISHLIST.LOGIN_TO_ACCESS": "Please login to access your wishlist"
+  },
+  "SHIPPING_ADDRESS": {
+    "TITLE": "Shipping Address",
+    "ADD_NEW_ADDRESS": "Add a New Address",
+    "NEXT": "Next",
+    "OR": "Or",
+    "NO_ADDRESSES": "You have no saved addresses. Please add a new address to proceed with your order."
+  },
+  "ADDRESS_DIALOG": {
+    "LIST_TITLE": "My Addresses",
+    "ADD_NEW_ADDRESS": "Add a New Address",
+    "EDIT_TITLE": "Update Address Info",
+    "CREATE_TITLE": "Add a New Address",
+    "STEP_1_TITLE": "Enter address details",
+    "CITY_LABEL": "City",
+    "CITY_PLACEHOLDER": "Enter city name",
+    "STREET_LABEL": "Address",
+    "STREET_PLACEHOLDER": "Enter your full address",
+    "STREET_REQUIRED": "Address is required",
+    "PHONE_LABEL": "Phone Number",
+    "PHONE_PLACEHOLDER": "Enter your phone number",
+    "NEXT": "Next",
+    "STEP_2_TITLE": "Find Your Location",
+    "FIND_LOCATION": "Find My Location",
+    "SUBMIT_ADD": "Add Address",
+    "SUBMIT_UPDATE": "Update Address",
+    "DELETE_CONFIRM": "Are you sure you want to delete this address?",
+    "UPDATE_SUCCESS": "Address updated successfully",
+    "ADD_SUCCESS": "Address added successfully",
+    "DELETE_SUCCESS": "Address deleted successfully",
+    "CANCEL": "Cancel",
+    "CONFIRM": "Confirm"
+  },
+  "GALLERY": {
+    "GALLERY_LABEL": "Gallery",
+    "CHECK_OUT": "Check Out",
+    "OUR_WONDERFUL_GALLERY": "our Wonderful Gallery",
+    "IMG_ALT": {
+      "GIFTS_ANNIVERSARY": "Gifts and Anniversary Presents",
+      "CHOCOLATES": "Heart shaped chocolate box with roses",
+      "RED_GIFTS": "Red gift boxes with roses",
+      "RING_BOX_FLOWERS": "Engagement ring box with flowers",
+      "RING_BOX_WHITE": "White engagement ring box",
+      "ENGAGEMENT_CARD": "Congratulations on your Engagement card"
+    }
+  },
+  "TRUSTED": {
+    "TRUSTED_PART1": "Trusted by over",
+    "TRUSTED_COUNT": "4.5k+",
+    "TRUSTED_PART2": "companies"
+  },
+  "TESTIMONIALS": {
+    "HEADING": "Real Words from Happy Customers",
+    "TITLE": "Testimonials",
+    "NO_DATA": "No testimonials available at the moment. Check back later!"
+  },
+  "VALIDATION": {
+    "REQUIRED": "Field is required",
+    "EMAIL": "Please enter a valid email address",
+    "MIN_LENGTH": "Minimum {{length}} characters required",
+    "MAX_LENGTH": "Maximum {{length}} characters allowed",
+    "MISMATCH": "Fields do not match",
+    "INVALID_PHONE": "Invalid phone number format",
+    "STRONG_PASSWORD": "Password must contain uppercase, lowercase, number and special character",
+    "PATTERN_PASSWORD": "Password must contain uppercase, lowercase, number and special character",
+    "INVALID": "Invalid field"
+  },
+  "SHARED": {
+    "SELECT_OPTION": "Select option"
+  },
+  "ABOUT_SECTION": {
+    "LABEL": "ABOUT",
+    "TITLE": "Delivering the <span class='text-maroon-600 dark:text-maroon-400'>Finest</span> Gift Boxes for Your <span class='text-maroon-600 dark:text-maroon-400'>Special</span> Moments",
+    "DESCRIPTION": "Make every moment memorable with our premium gift boxes. Carefully curated and beautifully packaged, each box is filled with handpicked items designed to impress. Whether it's for a birthday, wedding, or a simple 'thank you,' our gift boxes are crafted to leave a lasting impression — because thoughtful gifting starts here.",
+    "DISCOVER": "Discover",
+    "FEATURE_1": "Competitive Prices & Easy Shopping",
+    "FEATURE_2": "Premium Quality & Elegant Packaging",
+    "FEATURE_3": "Perfect for Every Occasion",
+    "FEATURE_4": "Fast & Reliable Delivery"
+  },
+  "HERO_SECTION": {
+    "LEFT_BANNER": {
+      "TITLE": "Special Gifts For The People You Love",
+      "BADGE": "Starting from 10.99 EGP",
+      "CTA": "Shop Now"
+    },
+    "MAIN_BANNERS": {
+      "1": {
+        "TITLE": "Say It with Flowers",
+        "SUBTITLE": "Elegant gifts for every special moment.",
+        "CTA": "I'm buying!"
+      },
+      "2": {
+        "TITLE": "Perfect Gifts For Him",
+        "SUBTITLE": "Discover our curated luxury collection.",
+        "CTA": "Shop Collection"
+      },
+      "3": {
+        "TITLE": "Celebrate with Joy",
+        "SUBTITLE": "Make it unforgettable with the perfect surprise.",
+        "CTA": "Discover"
+      },
+      "4": {
+        "TITLE": "Love & Romance",
+        "SUBTITLE": "Express your feelings beautifully and deeply.",
+        "CTA": "View More"
+      }
+    },
+    "BOTTOM_BANNERS": {
+      "1": {
+        "TITLE": "Celebrate Her Forever with a Gift She'll Always Remember",
+        "BADGE": "Wedding",
+        "CTA": "Shop Collection"
+      },
+      "2": {
+        "TITLE": "Honor the Beginning of a Beautiful Journey Together",
+        "BADGE": "Engagement",
+        "CTA": "Shop Collection"
+      },
+      "3": {
+        "TITLE": "Mark Every Year of Love with a Meaningful Surprise",
+        "BADGE": "Anniversary",
+        "CTA": "Shop Collection"
+      }
+    }
+  },
+  "HOME": {
+    "BEST_SELLER": {
+      "BADGE": "Best Selling",
+      "TITLE": "<span class='text-maroon-600 dark:text-soft-pink-300'>Check Out</span> What Everyone's <span class='text-maroon-600 dark:text-soft-pink-300'>Buying</span> Right Now",
+      "SUBTITLE": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
+      "CTA": "Explore gifts",
+      "NO_DATA": "No best sellers available at the moment."
+    },
+    "FEATURES": {
+      "FREE_DELIVERY": {
+        "TITLE": "Free Delivery",
+        "SUBTITLE": "For orders above 120 EGP"
+      },
+      "GET_REFUND": {
+        "TITLE": "Get Refund",
+        "SUBTITLE": "Refunds within 30 days"
+      },
+      "SAFE_PAYMENT": {
+        "TITLE": "Safe Payment",
+        "SUBTITLE": "100% Secure Payment"
+      },
+      "SUPPORT": {
+        "TITLE": "24/7 Support",
+        "SUBTITLE": "Contact us at any time"
+      }
+    }
+  },
+  "FOOTER": {
+    "DISCOVER_WEBSITE": "Discover our website",
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "CATEGORIES": "Categories",
+    "OCCASIONS": "Occasions",
+    "CONTACT": "Contact",
+    "ABOUT": "About",
+    "TERMS_CONDITIONS": "Terms & Conditions",
+    "PRIVACY_POLICY": "Privacy Policy",
+    "FAQS": "FAQs",
+    "GET": "Get ",
+    "DISCOUNT_VALUE": "20%",
+    "DISCOUNT_COUPON": " Off Discount Coupon",
+    "SUBSCRIBE_NEWSLETTER": "By subscribing to our newsletter",
+    "ENTER_EMAIL": "Enter Your Email",
+    "SUBSCRIBE": "Subscribe",
+    "APP_NAME": "Rose E-Commerce App",
+    "ALL_RIGHTS_RESERVED": "All rights reserved | 2025"
+  },
+  "MOST_POPULAR": {
+    "MOST_POPULAR_TITLE": "Most Popular",
+    "VIEW_MORE": "View More",
+    "ALL": "All",
+    "NO_PRODUCTS_FOUND": "No products found.",
+    "LOADING_PRODUCTS": "Loading products..."
+  },
+  "CATEGORIES_PAGE": {
+    "LABEL": "Categories",
+    "TITLE": "Shop by Category",
+    "SUBTITLE": "Choose a gift category to browse products curated for that style.",
+    "EMPTY_TITLE": "No categories available",
+    "EMPTY_SUBTITLE": "Categories will appear here once they are available.",
+    "PRODUCTS_COUNT": "{{count}} products"
+  },
+  "OCCASIONS_PAGE": {
+    "LABEL": "Occasions",
+    "TITLE": "Shop by Occasion",
+    "SUBTITLE": "Choose an occasion to browse products curated for that moment.",
+    "EMPTY_TITLE": "No occasions available",
+    "EMPTY_SUBTITLE": "Occasions will appear here once they are available.",
+    "PRODUCTS_COUNT": "{{count}} products"
+  },
+  "PRODUCT_BADGES": {
+    "HOT": "HOT",
+    "NEW": "NEW",
+    "OUT_OF_STOCK": "OUT OF STOCK"
+  },
+  "CURRENCY": "EGP",
+  "PRODUCT_DETAILS": {
+    "LOADING": "Loading Product Details...",
+    "CURRENCY": "EGP",
+    "LEFT_IN_STOCK": "left in stock",
+    "OUT_OF_STOCK": "Out of stock",
+    "RATING": "Rating",
+    "RATINGS": "ratings",
+    "ADD_TO_WISHLIST": "Add to Wishlist",
+    "ADD_TO_CART": "Add to Cart"
+  },
+  "PRODUCT_REVIEWS": {
+    "TITLE": "Product Reviews",
+    "NO_REVIEWS": "No reviews yet. Be the first to share your thoughts!",
+    "YOUR_RATING": "Your rating:",
+    "REVIEW_TITLE": "Title",
+    "REVIEW_TITLE_PLACEHOLDER": "Enter review title",
+    "REVIEW": "Review",
+    "REVIEW_PLACEHOLDER": "What do you think of this product?",
+    "LOGIN_TO_REVIEW": "Please login to be able to review the product",
+    "ADD_REVIEW": "Add Review"
+  },
+  "RELATED_PRODUCTS": {
+    "TITLE": "Related Products",
+    "NO_DATA": "No Related Products available at the moment."
+  },
+  "Category": "Category",
+  "Reset": "Reset",
+  "Reset All": "Reset All",
+  "Occasion": "Occasion",
+  "Rating": "Rating",
+  "Price": "Price",
+  "from": "from",
+  "to": "to",
+  "There are no products in this Category": "There are no products in this Category",
+  "There are no products for this Occasion": "There are no products for this Occasion",
+  "There are no products with this Rating": "There are no products with this Rating",
+  "There are no products in this Price range": "There are no products in this Price range",
+  "No products match the selected filters": "No products match the selected filters",
+  "There are no products available": "There are no products available",
+  "PRODUCT_FILTERS": {
+    "TITLE": "Filters",
+    "SUBTITLE": "Narrow down the catalog and find the right gift faster.",
+    "ERROR_NEGATIVE": "Price cannot be less than 0.",
+    "ERROR_RANGE": "Maximum price must be greater than or equal to minimum price.",
+    "ACTIVE": "{{count}} active",
+    "ALL_CATEGORIES": "All categories",
+    "ALL_OCCASIONS": "All occasions",
+    "PRICE_RANGE": "Price range",
+    "PRICE_HINT": "Drag the handles to set the budget that fits your order.",
+    "MIN_PRICE": "Min",
+    "MAX_PRICE": "Max",
+    "OPEN": "Filters",
+    "SHOW_TABLET": "Show filters",
+    "HIDE_TABLET": "Hide filters",
+    "APPLY": "Apply",
+    "RESET": "Reset",
+    "RESET_ALL": "Reset all"
+  },
+  "CART": {
+    "TITLE": "Cart",
+    "PRODUCTS_COUNT": "{{count}} Products",
+    "CLEAR_CART": "Clear Cart",
+    "CONTINUE_SHOPPING": "Continue Shopping",
+    "EMPTY_MESSAGE": "Your cart is empty, wanna try shopping?",
+    "REMOVE_ITEM": "Remove",
+    "RATING": "Rating:",
+    "RATINGS_COUNT": "({{count}} ratings)",
+    "LIKED_PRODUCTS_TITLE": "Products You May Like",
+    "LIKED_PRODUCT_NOT_FOUND": "No Products available at the moment.",
+    "ADD_SUCCESS": "Product Added Successfully",
+    "UPDATE_SUCCESS": "Product Updated Successfully",
+    "REMOVE_SUCCESS": "Product Removed Successfully",
+    "CLEAR_SUCCESS": "Clear Cart Successfully",
+    "SUMMARY": "Summary",
+    "COUPON_PLACEHOLDER": "Coupon Code",
+    "APPLY_BTN": "Apply Coupon",
+    "COUPON_APPLIED": "Coupon applied successfully",
+    "NO_COUPON": "No coupons applied",
+    "SUBTOTAL": "Subtotal",
+    "TOTAL_DISCOUNT": "Discount",
+    "ORDER_TOTAL": "Total",
+    "PROCEED_CHECKOUT": "Checkout",
+    "DISCOUNT": "Discount"
+  },
+  "WISHLIST": {
+    "TITLE": "My Wishlist",
+    "ITEMS_COUNT": "items",
+    "EMPTY_TITLE": "Your wishlist is empty",
+    "EMPTY_SUBTITLE": "Browse our products and add your favorites here to save them for later",
+    "BROWSE_PRODUCTS": "Browse Products",
+    "REMOVE": "Remove",
+    "MOVE_TO_CART": "Move to Cart",
+    "ADDED_TO_CART": "Product moved to cart successfully",
+    "REMOVED": "Removed from wishlist",
+    "ADDED": "Added to wishlist",
+    "CONTINUE_SHOPPING": "Continue Shopping",
+    "PRODUCTS_YOU_MAY_LIKE": "Products You May Like",
+    "NO_RECOMMENDATIONS": "No products available at the moment."
+  },
+  "NOT_FOUND": {
+    "TITLE": "Lost in the Gift Shop?",
+    "DESCRIPTION": "The page you're looking for has moved or no longer exists. Let's get you back to finding the perfect gift.",
+    "BACK_TO_HOME": "Back to Home",
+    "BROWSE_PRODUCTS": "Browse Products"
+  },
+  "CHECKOUT": {
+    "PAYMENT_METHOD": "Payment Method",
+    "CASH_TITLE": "Cash on Delivery",
+    "CASH_DESC": "You'll pay in cash when your order is delivered.",
+    "CARD_TITLE": "Credit Card",
+    "CARD_DESC": "You'll be securely redirected to Stripe to complete your payment.",
+    "CHECKOUT_BTN": "Checkout",
+    "ORDER_SUCCESS": "Order placed successfully!",
+    "ORDER_FAILED": "Payment failed, please try again or choose another method"
+  },
+  "CONTACT_PAGE": {
+    "BADGE": "Get in touch",
+    "TITLE": "We'd Love to Hear from You",
+    "SUBTITLE": "Have a question about an order, a gift recommendation, or delivery details? Send us a message and our team will reply as soon as possible.",
+    "SUCCESS_MESSAGE": "Your message has been sent successfully.",
+    "FORM": {
+      "NAME": "Name",
+      "NAME_PLACEHOLDER": "Enter your full name",
+      "EMAIL": "Email",
+      "EMAIL_PLACEHOLDER": "Enter your email address",
+      "PHONE": "Phone",
+      "PHONE_PLACEHOLDER": "Enter your phone number",
+      "SUBJECT": "Subject",
+      "SUBJECT_PLACEHOLDER": "Question about flower delivery",
+      "MESSAGE": "Message",
+      "MESSAGE_PLACEHOLDER": "I would like to know if you deliver to my area. My zip code is 12345.",
+      "SUBMIT": "Send Message"
+    },
+    "CARDS": {
+      "EMAIL": {
+        "TITLE": "Email Support",
+        "VALUE": "support@rose-store.com"
+      },
+      "PHONE": {
+        "TITLE": "Phone",
+        "VALUE": "+20 100 000 0000"
+      },
+      "HOURS": {
+        "TITLE": "Working Hours",
+        "VALUE": "Daily from 9:00 AM to 10:00 PM"
+      }
+    }
+  },
+  "ABOUT_PAGE": {
+    "BADGE": "About us",
+    "TITLE": "Crafting Meaningful Gift Moments",
+    "SUBTITLE": "We blend thoughtful curation, elegant presentation, and reliable delivery so every gift feels special from first look to final delivery.",
+    "IMAGES": {
+      "ALT_2": "Premium gift packaging",
+      "ALT_3": "Celebration gift with flowers"
+    },
+    "CARDS": {
+      "QUALITY": {
+        "TITLE": "Premium Selection",
+        "DESCRIPTION": "Every product is selected to meet high quality standards and memorable presentation."
+      },
+      "PACKAGING": {
+        "TITLE": "Elegant Packaging",
+        "DESCRIPTION": "Our packaging is designed to create a luxurious unboxing moment for every recipient."
+      },
+      "DELIVERY": {
+        "TITLE": "Reliable Delivery",
+        "DESCRIPTION": "Fast and dependable shipping that keeps your important occasions on schedule."
+      },
+      "SUPPORT": {
+        "TITLE": "Always Here to Help",
+        "DESCRIPTION": "Our support team is available to guide you from product selection to final checkout."
+      }
+    }
+  },
+  "ORDERS": {
+    "TITLE": "Orders",
+    "TOTAL_ORDERS": "orders",
+    "TOTAL_PRICE": "Total Price",
+    "PAYMENT_METHOD": "Payment Method",
+    "DELIVERY_STATUS": "Delivery Status",
+    "STATUS": "Status",
+    "ORDER_ITEMS": "Order Items",
+    "SHOW_ALL": "Show All",
+    "SHOW_LESS": "Show Less",
+    "CREATED_AT": "Created at {{date}} at {{time}}",
+    "PAID": "Paid",
+    "UNPAID": "Unpaid",
+    "CASH": "Cash",
+    "CARD": "Credit Card",
+    "PENDING": "Pending",
+    "DELIVERED": "Delivered",
+    "CANCELLED": "Cancelled",
+    "IN_PROGRESS": "In Progress",
+    "DONE": "Done",
+    "EMPTY_TITLE": "No orders yet",
+    "EMPTY_SUBTITLE": "Your completed checkouts will appear here. Start shopping and we'll keep every order neatly organized for you.",
+    "CONTINUE_SHOPPING": "Browse Products"
+  },
+  "ERRORS": {
+    "UNEXPECTED": "An unexpected error occurred",
+    "NETWORK": "Network error: Please check your connection",
+    "SERVER": "Server error: Please try again later",
+    "UNAUTHORIZED": "Please login first",
+    "FORBIDDEN": "You don't have permission to access this page"
+  },
+  "PROFILE_PAGE": {
+    "UPLOAD_PHOTO": "Upload Photo",
+    "UPLOAD_HINT": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+    "CHOOSE_FILE": "Choose File",
+    "FIRST_NAME": "First name",
+    "LAST_NAME": "Last name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "GENDER": "Gender",
+    "DELETE_ACCOUNT": "Delete My Account",
+    "SAVE_CHANGES": "Save Changes",
+    "OLD_PASSWORD": "Old Password",
+    "NEW_PASSWORD": "New Password",
+    "CONFIRM_PASSWORD": "Confirm New Password",
+    "CHANGE_PASSWORD": "Change Password",
+    "ENTER_OLD_PASSWORD": "Enter your current password",
+    "ENTER_NEW_PASSWORD": "Enter a new password",
+    "ENTER_CONFIRM_PASSWORD": "Re-enter your new password",
+    "PHOTO_UPDATED": "Photo updated successfully",
+    "PHOTO_UPDATE_FAILED": "Failed to update photo",
+    "UPDATE_SUCCESS": "Profile updated successfully",
+    "PASSWORD_UPDATE_SUCCESS": "Password changed successfully"
+  }
+}

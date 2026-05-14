@@ -1,0 +1,46 @@
+<div
+  class="rounded-2xl border border-maroon-100 bg-maroon-50 p-5 dark:border-zinc-800 dark:bg-zinc-900/70"
+>
+  @if (href()) {
+  <a
+    [href]="href()"
+    class="flex w-full items-start gap-3 transition-opacity hover:opacity-80"
+  >
+    <div
+      class="mt-1 rounded-xl bg-maroon-600 p-2 text-white dark:bg-soft-pink-200 dark:text-zinc-800"
+    >
+      <lucide-icon [name]="icon()" class="h-5 w-5"></lucide-icon>
+    </div>
+    <div class="min-w-0 flex-1">
+      <p class="font-semibold text-maroon-700 dark:text-soft-pink-200">
+        {{ titleKey() | translate }}
+      </p>
+      <p
+        [attr.dir]="forceLtr() ? 'ltr' : null"
+        class="text-sm text-zinc-600 wrap-break-word dark:text-zinc-300"
+      >
+        {{ valueKey() | translate }}
+      </p>
+    </div>
+  </a>
+  } @else {
+  <div class="flex items-start gap-3">
+    <div
+      class="mt-1 rounded-xl bg-maroon-600 p-2 text-white dark:bg-soft-pink-200 dark:text-zinc-800"
+    >
+      <lucide-icon [name]="icon()" class="h-5 w-5"></lucide-icon>
+    </div>
+    <div class="min-w-0 flex-1">
+      <p class="font-semibold text-maroon-700 dark:text-soft-pink-200">
+        {{ titleKey() | translate }}
+      </p>
+      <p
+        [attr.dir]="forceLtr() ? 'ltr' : null"
+        class="text-sm text-zinc-600 wrap-break-word dark:text-zinc-300"
+      >
+        {{ valueKey() | translate }}
+      </p>
+    </div>
+  </div>
+  }
+</div>

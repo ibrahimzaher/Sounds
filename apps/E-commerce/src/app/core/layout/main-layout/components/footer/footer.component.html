@@ -1,0 +1,101 @@
+<footer
+  class="bg-zinc-800 dark:bg-zinc-900 text-zinc-300 py-10 md:py-10 px-4 md:px-8"
+>
+  <div
+    class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-12 gap-8 lg:gap-12 items-start text-start"
+  >
+    <div
+      class="flex flex-col items-start space-y-4 col-span-1 md:col-span-3 lg:col-span-2"
+    >
+      <img
+        src="images/navbar/logo.png"
+        width="170"
+        height="160"
+        alt="Rose Logo"
+        class="w-32 md:w-36 lg:w-40 h-auto object-contain drop-shadow-md"
+      />
+      <div class="text-start mt-2 md:mt-4">
+        <h2
+          class="text-soft-pink-200 dark:text-soft-pink-300 text-sm md:text-base font-semibold mb-1"
+        >
+          {{ 'FOOTER.APP_NAME' | translate }}
+        </h2>
+        <p class="text-[10px] md:text-xs text-zinc-400">
+          {{ 'FOOTER.ALL_RIGHTS_RESERVED' | translate }}
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-start text-xs md:text-sm col-span-1 md:col-span-4 lg:col-span-3"
+    >
+      <h2
+        class="text-soft-pink-300 dark:text-soft-pink-300 text-base md:text-lg font-bold mb-3 md:mb-4"
+      >
+        {{ 'FOOTER.DISCOVER_WEBSITE' | translate }}
+      </h2>
+      <ul class="flex flex-col space-y-2 md:space-y-3 text-start">
+        @for (link of footerLinks; track link.route) {
+        <li>
+          <a [routerLink]="link.route" class="footer-link">{{
+            link.label | translate
+          }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+
+    <div
+      class="flex flex-col items-center md:items-start col-span-2 md:col-span-4 lg:col-span-4 md:col-start-9 lg:col-start-9 w-full md:justify-self-end mt-4 md:mt-0"
+    >
+      <h2
+        class="text-soft-pink-200 dark:text-soft-pink-300 text-base md:text-lg font-bold mb-1"
+      >
+        {{ 'FOOTER.GET' | translate
+        }}<span class="text-maroon-50">{{
+          'FOOTER.DISCOUNT_VALUE' | translate
+        }}</span
+        >{{ 'FOOTER.DISCOUNT_COUPON' | translate }}
+      </h2>
+      <p class="text-[10px] md:text-xs text-zinc-400 mb-6 md:mb-4">
+        {{ 'FOOTER.SUBSCRIBE_NEWSLETTER' | translate }}
+      </p>
+
+      <form
+        [formGroup]="subscriptionForm"
+        (ngSubmit)="submitSubscription()"
+        class="w-full max-w-93.75 mt-2 flex items-center bg-zinc-700/50 dark:bg-zinc-800 rounded-full border border-zinc-600 dark:border-zinc-700 p-0 focus-within:ring-1 focus-within:ring-soft-pink-300 transition-all h-9.5"
+      >
+        <label for="footer-subscription-email" class="sr-only">
+          {{ 'FOOTER.ENTER_EMAIL' | translate }}
+        </label>
+        <input
+          id="footer-subscription-email"
+          type="email"
+          [placeholder]="'FOOTER.ENTER_EMAIL' | translate"
+          formControlName="email"
+          [attr.aria-invalid]="
+            subscriptionForm.controls.email.invalid &&
+            subscriptionForm.controls.email.touched
+          "
+          [readonly]="isLoading()"
+          class="grow bg-transparent text-white dark:text-zinc-300 placeholder-zinc-400 text-sm outline-none px-4 h-full min-w-0"
+        />
+        <div class="shrink-0 h-full">
+          <lib-button
+            type="submit"
+            [loading]="isLoading()"
+            [disabled]="isLoading() || subscriptionForm.invalid"
+            class="[&>button]:rounded-full [&>button]:h-full [&>button]:py-0 [&>button]:px-4 [&>button]:bg-soft-pink-100 [&>button]:dark:bg-soft-pink-300 [&>button]:hover:bg-soft-pink-200 [&>button]:text-maroon-700 [&>button]:dark:text-zinc-800 [&>button]:text-xs lg:[&>button]:text-sm block h-full"
+            [icon]="
+              translate.getCurrentLang() === 'ar' ? arrowLeft : arrowRight
+            "
+            iconPos="right"
+          >
+            {{ 'FOOTER.SUBSCRIBE' | translate }}
+          </lib-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</footer>

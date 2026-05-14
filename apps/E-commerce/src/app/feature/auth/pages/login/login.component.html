@@ -1,0 +1,44 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()" class="space-y-6">
+  <div class="space-y-2">
+    <lib-text-input
+      formControlName="email"
+      label="{{ 'AUTH.LOGIN.EMAIL' | translate }}"
+      placeholder="{{ 'AUTH.LOGIN.EMAIL_PLACEHOLDER' | translate }}"
+      type="email"
+    />
+  </div>
+
+  <div class="space-y-2">
+    <lib-text-input
+      formControlName="password"
+      label="{{ 'AUTH.LOGIN.PASSWORD' | translate }}"
+      placeholder="{{ 'AUTH.LOGIN.PASSWORD_PLACEHOLDER' | translate }}"
+      type="password"
+    />
+    <div class="flex justify-end rtl:justify-start mt-2">
+      <a
+        routerLink="/auth/forgot-password"
+        class="text-sm font-medium text-(--color-maroon-700) hover:underline dark:text-(--color-soft-pink-300)"
+      >
+        {{ 'AUTH.LOGIN.FORGOT_PASSWORD' | translate }}
+      </a>
+    </div>
+  </div>
+
+  <div class="flex items-center">
+    <lib-checkbox-input
+      formControlName="rememberMe"
+      label="{{ 'AUTH.LOGIN.REMEMBER_ME' | translate }}"
+    />
+  </div>
+
+  <lib-button
+    type="submit"
+    [loading]="isLoading()"
+    [block]="true"
+    variant="primary"
+    [disabled]="isLoading()"
+  >
+    {{ 'AUTH.LOGIN.SUBMIT' | translate }}
+  </lib-button>
+</form>

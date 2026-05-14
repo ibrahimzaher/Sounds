@@ -1,0 +1,49 @@
+<section class="taxonomy-page">
+  <div class="taxonomy-container">
+    <header class="taxonomy-header">
+      <span class="taxonomy-label">
+        {{ 'OCCASIONS_PAGE.LABEL' | translate }}
+      </span>
+      <h1 class="taxonomy-title">
+        {{ 'OCCASIONS_PAGE.TITLE' | translate }}
+      </h1>
+      <p class="taxonomy-subtitle">
+        {{ 'OCCASIONS_PAGE.SUBTITLE' | translate }}
+      </p>
+    </header>
+
+    @if (isLoading()) {
+    <div class="taxonomy-grid">
+      @for (card of skeletonCards; track card) {
+      <div class="taxonomy-skeleton-card">
+        <div class="taxonomy-skeleton-media"></div>
+        <div class="taxonomy-skeleton-content">
+          <div class="taxonomy-skeleton-title"></div>
+          <div class="taxonomy-skeleton-meta"></div>
+        </div>
+      </div>
+      }
+    </div>
+    } @else if (occasions().length === 0) {
+    <div class="taxonomy-empty-state">
+      <div class="taxonomy-empty-icon-box">
+        <lucide-icon [img]="LayoutGridIcon" class="taxonomy-empty-icon"></lucide-icon>
+      </div>
+      <h2 class="taxonomy-empty-title">
+        {{ 'OCCASIONS_PAGE.EMPTY_TITLE' | translate }}
+      </h2>
+      <p class="taxonomy-empty-subtitle">
+        {{ 'OCCASIONS_PAGE.EMPTY_SUBTITLE' | translate }}
+      </p>
+    </div>
+    } @else {
+    <div class="taxonomy-grid">
+      @for (occasion of occasions(); track occasion._id) {
+      <app-taxonomy-card [title]="occasion.name" [imageUrl]="occasionImageUrl(occasion.image)" queryParamName="occasion"
+        [queryParamValue]="occasion._id" [productsCount]="occasion.productsCount"
+        productsCountKey="OCCASIONS_PAGE.PRODUCTS_COUNT"></app-taxonomy-card>
+      }
+    </div>
+    }
+  </div>
+</section>

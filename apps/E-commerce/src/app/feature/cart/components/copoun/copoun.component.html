@@ -1,0 +1,119 @@
+<section class="rounded-2xl text-zinc-800 dark:text-zinc-100">
+  <h3 class="text-[30px] font-semibold mb-4">
+    {{ 'CART.SUMMARY' | translate }}
+  </h3>
+
+  <div
+    class="bg-zinc-50 dark:bg-zinc-900/50 p-4 rounded-md border border-transparent dark:border-zinc-800"
+  >
+    <form
+      [formGroup]="couponForm"
+      (ngSubmit)="applyCoupon()"
+      class="flex flex-col sm:flex-row gap-3"
+    >
+      <label for="cart-coupon-code" class="sr-only">
+        {{ 'CART.COUPON_PLACEHOLDER' | translate }}
+      </label>
+      <lib-text-input
+        id="cart-coupon-code"
+        formControlName="code"
+        class="block w-full"
+        placeholder="{{ 'CART.COUPON_PLACEHOLDER' | translate }}"
+      />
+
+      <lib-button
+        type="submit"
+        [loading]="isApplyingCoupon()"
+        [disabled]="isApplyingCoupon() || !hasItems()"
+        [icon]="'ticket-percent'"
+        [block]="true"
+        class="sm:min-w-38"
+      >
+        {{ 'CART.APPLY_BTN' | translate }}
+      </lib-button>
+    </form>
+
+    <div
+      class="mt-4 rounded-xl border border-zinc-300 min-h-45 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-950/40"
+    >
+      @if (lastAppliedCoupon()) {
+      <div class="min-h-45 flex items-center justify-center text-center" aria-live="polite">
+        <div class="w-full max-w-xs rounded-xl p-5">
+          <p
+            class="text-xs uppercase tracking-[0.15em] text-maroon-700 dark:text-soft-pink-400"
+          >
+            {{ 'CART.APPLY_BTN' | translate }}
+          </p>
+          <p
+            class="mt-2 text-base font-bold text-maroon-700 dark:text-soft-pink-400"
+          >
+            -{{ lastAppliedCoupon()!.discountAmount | number : '1.0-2' }}
+            {{ 'CURRENCY' | translate }}
+          </p>
+        </div>
+      </div>
+      } @else {
+      <div class="min-h-45 flex items-center justify-center text-center" aria-live="polite">
+        <div class="w-full max-w-xs rounded-xl p-5">
+          <p class="text-zinc-400 dark:text-zinc-500 italic text-[16px]">
+            {{ 'CART.NO_COUPON' | translate }}
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="mt-5 space-y-3">
+      @if (subtotal()) {
+      <div
+        class="flex items-center justify-between text-lg text-zinc-700 dark:text-zinc-300"
+      >
+        <span>{{ 'CART.SUBTOTAL' | translate }}</span>
+        <span class="font-semibold">
+          {{ subtotal() | number : '1.0-2' }} {{ 'CURRENCY' | translate }}
+        </span>
+      </div>
+      } @if (hasItems()) {
+      <div
+        class="flex items-center gap-3 text-sm font-semibold text-zinc-500 dark:text-zinc-400"
+      >
+        <span class="h-px flex-1 bg-zinc-300 dark:bg-zinc-800"></span>
+        <span class="shrink-0">
+          @if (totalDiscountAmount() > 0) {
+          {{ 'CART.TOTAL_DISCOUNT' | translate }}:
+          <span class="text-maroon-700 dark:text-soft-pink-400">
+            {{ totalDiscountAmount() | number : '1.0-2' }}
+            {{ 'CURRENCY' | translate }} ({{ discountPercent() }}%)
+          </span>
+          } @else {
+          {{ 'CART.TOTAL_DISCOUNT' | translate }}
+          }
+        </span>
+        <span class="h-px flex-1 bg-zinc-300 dark:bg-zinc-800"></span>
+      </div>
+      }
+
+      <div
+        class="flex items-center justify-between text-[24px] font-bold text-zinc-900 dark:text-white pt-2"
+      >
+        <span>{{ 'CART.ORDER_TOTAL' | translate }}</span>
+        <span>
+          {{ total() | number : '1.0-2' }} {{ 'CURRENCY' | translate }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="my-4">
+  <lib-button
+    [block]="true"
+    [disabled]="!hasItems()"
+    [icon]="'move-right'"
+    [iconPos]="'right'"
+    size="lg"
+    routerLink="/checkout"
+  >
+    {{ 'CART.PROCEED_CHECKOUT' | translate }}
+  </lib-button>
+</div>

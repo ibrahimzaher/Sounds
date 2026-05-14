@@ -1,0 +1,59 @@
+<div class="p-8 space-y-8 max-w-2xl mx-auto">
+  <h1 class="text-2xl font-bold">UI Components Demo</h1>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold">Buttons</h2>
+    <div class="flex flex-wrap gap-4 items-center">
+      <lib-button>Default</lib-button>
+      <lib-button variant="secondary">Secondary</lib-button>
+      <lib-button variant="outline">Outline</lib-button>
+      <lib-button variant="ghost">Ghost</lib-button>
+      <lib-button variant="link">Link</lib-button>
+    </div>
+    <div class="flex flex-wrap gap-4 items-center">
+      <lib-button size="sm">Small</lib-button>
+      <lib-button size="md">Medium</lib-button>
+      <lib-button size="lg">Large</lib-button>
+    </div>
+    <div class="flex flex-wrap gap-4 items-center">
+      <lib-button [loading]="true">Loading</lib-button>
+      <lib-button [disabled]="true">Disabled</lib-button>
+    </div>
+    <div class="flex flex-col gap-2">
+      <h3 class="font-medium">Block Button</h3>
+      <lib-button [block]="true">Block Button</lib-button>
+    </div>
+    <div class="flex flex-wrap gap-4 items-center">
+      <h3 class="font-medium w-full">With Icons</h3>
+      <lib-button [icon]="Mail">Login with Email</lib-button>
+      <lib-button [icon]="ChevronRight" iconPos="right">Get Started</lib-button>
+      <lib-button
+        variant="secondary"
+        [icon]="LogOut"
+        (click)="onButtonClick($event)"
+        >Sign Out</lib-button
+      >
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold">Labels</h2>
+    <div class="flex flex-col gap-4">
+      <div class="space-y-1">
+        <lib-lable>Default Label</lib-lable>
+        <p class="text-sm text-gray-500">
+          Associated with an input (conceptually)
+        </p>
+      </div>
+      <div class="space-y-1">
+        <lib-lable class="text-red-500">Styled Label (Red)</lib-lable>
+        <p class="text-sm text-gray-500">Custom class applied</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-xl font-semibold">Error Message</h2>
+    <lib-error message="This is a standalone error message component." />
+  </section>
+</div>

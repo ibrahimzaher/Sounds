@@ -1,0 +1,29 @@
+<section>
+  <!-- Header -->
+  <div class="text-center mb-10 md:mb-14">
+    <p class="text-maroon-600 uppercase tracking-[0.2em] text-xs font-bold mb-3">
+      {{ 'GALLERY.GALLERY_LABEL' | translate }}
+    </p>
+    <app-heading-title [title]="
+        ('GALLERY.CHECK_OUT' | translate) +
+        ' ' +
+        ('GALLERY.OUR_WONDERFUL_GALLERY' | translate)
+      ">
+    </app-heading-title>
+  </div>
+
+  <!-- Masonry Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 h-[800px] md:h-[600px] lg:h-[700px]">
+    @for (column of galleryColumns; track column.rowClasses + $index) {
+    <div [class]="'grid h-full gap-4 md:gap-6 ' + column.rowClasses">
+      @for (image of column.images; track image.src) {
+      <div class="w-full h-full overflow-hidden rounded-xl shadow-sm relative">
+        <img [ngSrc]="image.src" fill sizes="(min-width: 768px) 33vw, 100vw"
+          class="absolute inset-0 w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500"
+          [alt]="image.altKey | translate" />
+      </div>
+      }
+    </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<p-confirmdialog
+  styleClass="full-width-confirm-dialog"
+  header="Confirmation"
+  [style]="{ width: 'min(80vw, 450px)' }"
+  [closable]="true"
+  [closeOnEscape]="true"
+  [dismissableMask]="true"
+  [focusTrap]="true"
+  closeAriaLabel="Close confirmation dialog"
+  acceptAriaLabel="Confirm action"
+  rejectAriaLabel="Cancel action"
+>
+  <ng-template #message let-message>
+    @if (message) {
+    <div class="flex flex-col items-center w-full pt-4">
+      <div
+        class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-6 border border-gray-50"
+      >
+        <lucide-icon
+          [name]="message.icon || 'AlertTriangle'"
+          class="w-12 h-12"
+        ></lucide-icon>
+      </div>
+
+      <p class="text-xl text-gray-800 px-4 mb-10 text-center">
+        {{ message.message }}
+      </p>
+    </div>
+    }
+  </ng-template>
+</p-confirmdialog>

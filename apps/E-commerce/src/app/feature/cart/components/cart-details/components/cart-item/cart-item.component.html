@@ -1,0 +1,104 @@
+<div class="grid h-full grid-cols-12 gap-4 py-2">
+  <div
+    class="relative col-span-12 aspect-square w-full overflow-hidden sm:col-span-4 sm:h-36 sm:aspect-auto lg:col-span-2 lg:h-40"
+  >
+    <img
+      [ngSrc]="cartItem().product.imgCover"
+      [alt]="cartItem().product.title"
+      fill
+      [priority]="isFirst()"
+      class="rounded-xl object-cover ring-1 ring-zinc-200 dark:ring-zinc-800"
+    />
+  </div>
+
+  <div
+    class="col-span-12 flex flex-col justify-between py-1 sm:col-span-8 lg:col-span-7"
+  >
+    <div>
+      <h3
+        class="line-clamp-2 min-h-12 text-base leading-6 font-bold text-maroon-700 transition-colors dark:text-maroon-400 sm:text-lg"
+      >
+        {{ cartItem().product.title }}
+      </h3>
+
+      <div class="mt-1 flex flex-wrap items-center gap-1.5">
+        <lucide-icon
+          name="star"
+          class="text-orange-400 fill-amber-500 w-4 h-4"
+        ></lucide-icon>
+        <span class="text-zinc-600 dark:text-zinc-400">
+          {{ 'CART.RATING' | translate }}
+          <span class="font-medium text-zinc-800 dark:text-zinc-200">
+            {{ cartItem().product.rateAvg }}/5
+          </span>
+        </span>
+        <span class="text-blue-600 dark:text-blue-400 font-medium">
+          {{
+            'CART.RATINGS_COUNT'
+              | translate : { count: cartItem().product.rateCount }
+          }}
+        </span>
+      </div>
+    </div>
+
+    <div class="mt-4 flex flex-wrap items-baseline gap-1.5">
+      <span class="text-xs text-maroon-600 dark:text-maroon-500 font-bold">
+        (x{{ cartItem().quantity }})
+      </span>
+      <span
+        class="text-2xl font-bold text-zinc-800 dark:text-zinc-100 transition-colors"
+      >
+        {{ cartItem().price }}
+      </span>
+      <span
+        class="text-sm font-bold text-zinc-600 dark:text-zinc-400 uppercase"
+        >{{ 'CURRENCY' | translate }}</span
+      >
+    </div>
+  </div>
+
+  <div
+    class="col-span-12 mt-auto flex flex-col gap-3 lg:col-span-3 lg:items-end lg:justify-between lg:gap-0"
+  >
+    <lib-button
+      class="order-last mb-0 w-full lg:order-0 lg:mb-5 lg:w-fit"
+      (click)="removeProduct(cartItem().product._id)"
+      [icon]="'trash-2'"
+      [block]="true"
+      [variant]="'destructive'"
+    >
+      {{ 'CART.REMOVE_ITEM' | translate }}
+    </lib-button>
+
+    <div
+      class="order-first mb-0 flex w-full items-center gap-2 sm:gap-3 lg:order-0 lg:mb-5"
+    >
+      <lib-button
+        [disabled]="cartItem().quantity <= 1"
+        [ariaLabel]="'Decrease quantity for ' + cartItem().product.title"
+        (buttonClick)="
+          updateProductQuantity(cartItem().product._id, cartItem().quantity - 1)
+        "
+        [icon]="'minus'"
+        [variant]="'secondary'"
+      ></lib-button>
+
+      <h5
+        aria-live="polite"
+        class="w-full rounded-lg border border-zinc-200 bg-white px-3 py-2 text-center text-zinc-800 transition-all dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 lg:w-32"
+      >
+        {{ cartItem().quantity }}
+      </h5>
+
+      <lib-button
+        [disabled]="cartItem().quantity === cartItem().product.quantity"
+        [ariaLabel]="'Increase quantity for ' + cartItem().product.title"
+        (buttonClick)="
+          updateProductQuantity(cartItem().product._id, cartItem().quantity + 1)
+        "
+        [icon]="'plus'"
+        [variant]="'secondary'"
+      ></lib-button>
+    </div>
+  </div>
+</div>

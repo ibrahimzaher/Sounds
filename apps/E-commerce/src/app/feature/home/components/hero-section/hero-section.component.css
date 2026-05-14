@@ -1,0 +1,99 @@
+:host ::ng-deep .hero-main-carousel.p-carousel {
+  height: 100%;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:host ::ng-deep .hero-main-carousel .p-carousel-content-container,
+:host ::ng-deep .hero-main-carousel .p-carousel-content,
+:host ::ng-deep .hero-main-carousel .p-carousel-viewport,
+:host ::ng-deep .hero-main-carousel .p-carousel-item-list,
+:host ::ng-deep .hero-main-carousel .p-carousel-item {
+  height: 100%;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  padding: 0 !important;
+}
+
+:host ::ng-deep .hero-main-carousel .p-carousel-content,
+:host ::ng-deep .hero-main-carousel .p-carousel-viewport {
+  overflow: hidden !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  :host ::ng-deep .hero-main-carousel,
+  :host ::ng-deep .hero-main-carousel .p-carousel-content,
+  :host ::ng-deep .hero-main-carousel .p-carousel-viewport,
+  :host ::ng-deep .hero-main-carousel .p-carousel-item-list {
+    touch-action: pan-y pinch-zoom !important;
+  }
+}
+
+:host ::ng-deep .hero-main-carousel .p-carousel-item {
+  display: flex;
+}
+
+:host ::ng-deep .hero-main-carousel .p-carousel-item > * {
+  flex: 1 1 auto;
+  min-height: 100%;
+}
+
+.hero-indicator {
+  border: 0;
+  padding: 0;
+  position: relative;
+  min-width: 44px;
+  min-height: 44px;
+  background: transparent !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-indicator::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  transition: all 0.3s ease-out;
+}
+
+.hero-indicator-active::after {
+  width: 1.5rem;
+  height: 0.625rem;
+  background-color: var(--color-maroon-600);
+}
+
+.hero-indicator-inactive::after {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: rgb(255 255 255 / 0.78);
+}
+
+.hero-nav-button {
+  border: 0;
+}
+
+.hero-nav-button-active {
+  color: var(--color-maroon-700);
+}
+
+.hero-nav-button-active:hover {
+  background-color: var(--color-maroon-50);
+}
+
+.hero-nav-button-disabled {
+  color: var(--color-zinc-300);
+  cursor: not-allowed;
+}
+
+:host-context(.dark) ::ng-deep .hero-cta-button lib-button button {
+  background-color: var(--color-maroon-50) !important;
+  color: var(--color-maroon-700) !important;
+}
+
+:host-context(.dark) ::ng-deep .hero-cta-button lib-button button:hover {
+  background-color: var(--color-maroon-100) !important;
+}

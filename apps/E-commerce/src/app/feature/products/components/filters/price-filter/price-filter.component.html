@@ -1,0 +1,40 @@
+<section class="flex flex-col gap-4">
+  <div class="flex items-center justify-between mb-1">
+    <h3 class="m-0 text-[20px] font-semibold text-zinc-800 dark:text-soft-pink-200">{{ 'Price' | translate }}</h3>
+    @if (hasValues()) {
+    <app-filter-reset-btn (reset)="onReset()"></app-filter-reset-btn>
+    }
+  </div>
+
+  <div class="flex items-center gap-3 w-full">
+    <div class="flex flex-col gap-1.5 w-1/2">
+      <label for="price-from" class="text-[14px] font-medium text-zinc-600 dark:text-zinc-300">{{ 'from' | translate }}</label>
+      <input id="price-from" type="number" [ngModel]="priceFrom()" (ngModelChange)="onPriceFromInput($event)" (change)="onPriceChange()"
+        placeholder="0" min="0"
+        [attr.aria-describedby]="validationError() ? 'price-filter-error' : null"
+        [attr.aria-invalid]="!!validationError()"
+        class="w-full rounded-lg border border-zinc-200 bg-transparent px-3 py-2 text-[14px] text-zinc-800 transition-colors placeholder:text-zinc-400 focus:outline-none focus:border-maroon-600 focus:ring-1 focus:ring-maroon-600 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-soft-pink-400 dark:focus:ring-soft-pink-400" />
+    </div>
+
+    <div class="flex flex-col gap-1.5 w-1/2">
+      <label for="price-to" class="text-[14px] font-medium text-zinc-600 dark:text-zinc-300">{{ 'to' | translate }}</label>
+      <input id="price-to" type="number" [ngModel]="priceTo()" (ngModelChange)="onPriceToInput($event)" (change)="onPriceChange()"
+        placeholder="1000000" min="0" [class.border-red-500]="validationError()"
+        [attr.aria-describedby]="validationError() ? 'price-filter-error' : null"
+        [attr.aria-invalid]="!!validationError()"
+        class="w-full rounded-lg border border-zinc-200 bg-transparent px-3 py-2 text-[14px] text-zinc-800 transition-colors placeholder:text-zinc-400 focus:outline-none focus:border-maroon-600 focus:ring-1 focus:ring-maroon-600 dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-100 dark:placeholder:text-zinc-500 dark:focus:border-soft-pink-400 dark:focus:ring-soft-pink-400" />
+    </div>
+  </div>
+
+  @if (validationError() === 'negative') {
+  <div id="price-filter-error" class="mt-2 text-[13px] font-medium text-red-500 dark:text-red-400" aria-live="polite" role="alert">
+    {{ 'PRODUCT_FILTERS.ERROR_NEGATIVE' | translate }}
+  </div>
+  }
+
+  @if (validationError() === 'range') {
+  <div id="price-filter-error" class="mt-2 text-[13px] font-medium text-red-500 dark:text-red-400" aria-live="polite" role="alert">
+    {{ 'PRODUCT_FILTERS.ERROR_RANGE' | translate }}
+  </div>
+  }
+</section>

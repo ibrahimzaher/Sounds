@@ -1,0 +1,19 @@
+<article
+  class="rounded-2xl border border-maroon-100 bg-maroon-50/70 p-4 dark:border-zinc-800 dark:bg-zinc-900/70"
+>
+  <div class="flex items-start gap-3">
+    <div
+      class="mt-0.5 rounded-xl bg-maroon-600 p-2 text-white dark:bg-soft-pink-200 dark:text-zinc-800"
+    >
+      <lucide-icon [name]="icon()" class="h-4 w-4"></lucide-icon>
+    </div>
+    <div class="min-w-0 flex-1">
+      <h3 class="text-sm font-bold text-maroon-700 dark:text-soft-pink-200">
+        {{ titleKey() | translate }}
+      </h3>
+      <p class="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-300">
+        {{ descriptionKey() | translate }}
+      </p>
+    </div>
+  </div>
+</article>

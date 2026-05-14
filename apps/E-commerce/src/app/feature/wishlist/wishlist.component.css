@@ -1,0 +1,36 @@
+.wishlist-card {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.wishlist-card:nth-child(1) { animation-delay: 0ms; }
+.wishlist-card:nth-child(2) { animation-delay: 60ms; }
+.wishlist-card:nth-child(3) { animation-delay: 120ms; }
+.wishlist-card:nth-child(4) { animation-delay: 180ms; }
+.wishlist-card:nth-child(5) { animation-delay: 240ms; }
+.wishlist-card:nth-child(6) { animation-delay: 300ms; }
+.wishlist-card:nth-child(7) { animation-delay: 360ms; }
+.wishlist-card:nth-child(8) { animation-delay: 420ms; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:host ::ng-deep lib-button button {
+  border-radius: 12px !important;
+  background-color: var(--color-maroon-700) !important;
+  border: none !important;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 300ms !important;
+}
+
+:host ::ng-deep lib-button button:hover {
+  background-color: var(--color-maroon-800) !important;
+}

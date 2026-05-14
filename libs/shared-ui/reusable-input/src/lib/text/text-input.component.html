@@ -1,0 +1,56 @@
+<div class="input-wrapper">
+  @if (label()) {
+  <label [for]="inputId()" class="input-label">
+    {{ label() }}
+  </label>
+  }
+
+  <div class="relative w-full flex items-center">
+    @if (icon()) {
+    <div class="input-icon-container icon-start pointer-events-none">
+      <i-lucide [name]="icon()" size="18"></i-lucide>
+    </div>
+    }
+
+    <input
+      [id]="inputId()"
+      [type]="
+        type() === 'password' ? (showPassword() ? 'text' : 'password') : type()
+      "
+      [placeholder]="placeholder()"
+      [value]="value || ''"
+      [disabled]="isDisabled"
+      [attr.aria-describedby]="describedBy"
+      [attr.aria-invalid]="Invalid"
+      (blur)="onTouched()"
+      (input)="value = $any($event.target).value; onChange(value)"
+      class="input-base"
+      [class.input-status-normal]="!Invalid"
+      [class.input-status-error]="Invalid"
+      [class.input-padding-start]="icon()"
+      [class.input-padding-end]="type() === 'password'"
+    />
+
+    @if (type() === 'password') {
+    <button
+      type="button"
+      (click)="togglePassword()"
+      [attr.aria-controls]="inputId()"
+      [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
+      [attr.aria-pressed]="showPassword()"
+      class="input-icon-container icon-end cursor-pointer hover:text-zinc-600 dark:hover:text-zinc-200 focus:outline-none"
+    >
+      <i-lucide
+        [name]="showPassword() ? 'eye' : 'eye-off'"
+        size="18"
+      ></i-lucide>
+    </button>
+    }
+  </div>
+
+  <lib-input-error
+    [control]="control"
+    [customType]="type()"
+    [errorId]="errorId()"
+  ></lib-input-error>
+</div>

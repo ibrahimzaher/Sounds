@@ -1,0 +1,12 @@
+@if (haveError) {
+<div
+  [id]="errorId() || null"
+  class="input-error-message"
+  aria-live="polite"
+  role="alert"
+>
+  <i-lucide name="alert-circle" size="14" class="shrink-0"></i-lucide>
+
+  <span>{{ errorInfo.key | translate : errorInfo.params }}</span>
+</div>
+}

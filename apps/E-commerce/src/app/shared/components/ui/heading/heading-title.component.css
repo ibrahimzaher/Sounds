@@ -1,0 +1,34 @@
+.highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  padding-bottom: 4px;
+}
+
+.highlight::before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  inset-inline-start: 0;
+  width: 70%;
+  height: 45%;
+  background-color: var(--color-soft-pink-100);
+  z-index: -1;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  width: 30%;
+  border-bottom: 2px solid var(--color-soft-pink-600);
+  z-index: -1;
+}
+:host-context(.dark) .highlight::before {
+  background-color: var(--color-zinc-700);
+}
+
+:host-context(.dark) .highlight::after {
+  border-bottom: 2px solid var(--color-soft-pink-200);
+}

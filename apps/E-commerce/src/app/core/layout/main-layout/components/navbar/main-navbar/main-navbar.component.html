@@ -1,0 +1,76 @@
+<nav
+  appClickOutside
+  [appClickOutsideEnabled]="isMenuOpen()"
+  (appClickOutside)="toggleMenu()"
+  aria-label="Primary navigation"
+  class="bg-maroon-700 dark:bg-soft-pink-200 fixed w-full mt-28 lg:mt-26 z-100 shadow-sm"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between md:justify-center items-center h-12">
+      <div class="md:hidden flex items-center">
+        <button
+          type="button"
+          (click)="toggleMenu()"
+          [attr.aria-controls]="mobileMenuId"
+          [attr.aria-expanded]="isMenuOpen()"
+          [attr.aria-label]="
+            isMenuOpen() ? 'Close navigation menu' : 'Open navigation menu'
+          "
+          class="text-white dark:text-zinc-900 hover:dark:text-zinc-950 cursor-pointer hover:text-soft-pink-200 focus:outline-none"
+        >
+          <i
+            [class]="isMenuOpen() ? 'pi pi-times' : 'pi pi-bars'"
+            class="text-xl"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+
+      <ul class="hidden md:flex items-center h-full m-0 p-0 list-none">
+        @for (item of items; track item.label) {
+        <li class="h-full flex items-center">
+          <a
+            [routerLink]="item.routerLink"
+            [routerLinkActive]="navStyles.desktopActive"
+            [routerLinkActiveOptions]="{ exact: item.exact ?? true }"
+            [class]="navStyles.desktopLink"
+          >
+            @if (item.icon) { <i [class]="item.icon" class="me-2 text-sm"></i> }
+            <span class="text-sm font-medium">{{
+              item.label | translate
+            }}</span>
+          </a>
+        </li>
+        }
+      </ul>
+
+      <div class="md:hidden text-white font-bold dark:text-zinc-900">ROSE</div>
+    </div>
+  </div>
+
+  <div
+    [id]="mobileMenuId"
+    [class.hidden]="!isMenuOpen()"
+    [attr.inert]="!isMenuOpen() ? '' : null"
+    class="md:hidden bg-maroon-700 dark:bg-soft-pink-300 border-t border-maroon-800 dark:border-soft-pink-400 absolute w-full z-50 shadow-xl"
+  >
+    <ul class="flex flex-col list-none m-0 p-2">
+      @for (item of items; track item.label) {
+      <li>
+        <a
+          [routerLink]="item.routerLink"
+          (click)="isMenuOpen.set(false)"
+          [routerLinkActive]="navStyles.mobileActive"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? true }"
+          [class]="navStyles.mobileLink"
+        >
+          @if (item.icon) { <i [class]="item.icon" class="me-3 text-lg"></i> }
+          <span class="text-base font-medium">{{
+            item.label | translate
+          }}</span>
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+</nav>

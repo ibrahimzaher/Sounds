@@ -1,0 +1,84 @@
+@switch (viewportMode()) { @case ('desktop') {
+<aside class="sticky top-24">
+  <ng-container [ngTemplateOutlet]="filtersPanel"></ng-container>
+</aside>
+} @case ('tablet') {
+<section
+  class="flex items-center justify-between gap-4 rounded-2xl border-2 border-zinc-100 bg-white/95 px-4 py-4 dark:border-zinc-800 dark:bg-zinc-900/95 sm:px-5">
+  <div class="min-w-0">
+    <p class="text-lg font-semibold tracking-tight text-maroon-700 dark:text-soft-pink-200">
+      {{ 'PRODUCT_FILTERS.TITLE' | translate }}
+    </p>
+    <p class="mt-1 text-sm leading-5 text-zinc-500 dark:text-zinc-400">
+      {{ 'PRODUCT_FILTERS.SUBTITLE' | translate }}
+    </p>
+  </div>
+
+  <lib-button
+    class="shrink-0 [&>button]:min-h-11 [&>button]:rounded-full [&>button]:bg-white [&>button]:px-4 [&>button]:text-sm [&>button]:font-semibold [&>button]:text-maroon-700 [&>button]:shadow-none [&>button:hover]:bg-maroon-50 dark:[&>button]:bg-zinc-950 dark:[&>button]:text-soft-pink-200 dark:[&>button:hover]:bg-zinc-800"
+    variant="secondary" size="md" [icon]="tabletToggleIcon()" iconPos="right" (buttonClick)="toggleTabletPanel()">
+    @if (isTabletPanelExpanded()) {
+    {{ 'PRODUCT_FILTERS.HIDE_TABLET' | translate }}
+    } @else {
+    {{ 'PRODUCT_FILTERS.SHOW_TABLET' | translate }}
+    }
+  </lib-button>
+</section>
+
+<div class="grid transition-all duration-300 ease-out" [class.grid-rows-[1fr]]="isTabletPanelExpanded()"
+  [class.opacity-100]="isTabletPanelExpanded()" [class.pt-4]="isTabletPanelExpanded()"
+  [class.grid-rows-[0fr]]="!isTabletPanelExpanded()" [class.opacity-0]="!isTabletPanelExpanded()"
+  [class.pt-0]="!isTabletPanelExpanded()">
+  <div class="overflow-hidden">
+    <ng-container [ngTemplateOutlet]="filtersPanel"></ng-container>
+  </div>
+</div>
+} @default {
+<section
+  class="flex items-center justify-between gap-3 rounded-2xl border-2 border-zinc-100 bg-white/95 px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900/95">
+  <div class="min-w-0">
+    <p class="text-lg font-semibold tracking-tight text-maroon-700 dark:text-soft-pink-200">
+      {{ 'PRODUCT_FILTERS.TITLE' | translate }}
+    </p>
+    <p class="mt-1 truncate text-sm leading-5 text-zinc-500 dark:text-zinc-400">
+      {{ 'PRODUCT_FILTERS.SUBTITLE' | translate }}
+    </p>
+  </div>
+
+  <lib-button class="shrink-0 [&>button]:min-h-11 [&>button]:rounded-full [&>button]:px-4 [&>button]:shadow-none"
+    variant="primary" size="md" [icon]="FiltersTriggerIcon" (buttonClick)="openMobileDrawer()">
+    {{ 'PRODUCT_FILTERS.OPEN' | translate }}
+  </lib-button>
+</section>
+
+<p-drawer [visible]="isMobileDrawerOpen()" (visibleChange)="isMobileDrawerOpen.set($event)" [position]="drawerPosition"
+  [blockScroll]="true" [modal]="true" [dismissible]="true" [closeOnEscape]="true"
+  [header]="'PRODUCT_FILTERS.TITLE' | translate" [maskStyle]="{
+    background: 'rgba(15, 23, 42, 0.45)',
+    backdropFilter: 'blur(8px)'
+  }" [styleClass]="
+    '!w-[80vw] !max-w-sm !border-zinc-200 !bg-white dark:!border-zinc-800 dark:!bg-zinc-950 [&_.p-drawer-header]:border-b [&_.p-drawer-header]:border-zinc-100 [&_.p-drawer-header]:px-5 [&_.p-drawer-header]:py-4 dark:[&_.p-drawer-header]:border-zinc-800 [&_.p-drawer-content]:px-5 [&_.p-drawer-content]:py-5'
+  ">
+  <ng-container [ngTemplateOutlet]="filtersPanel"></ng-container>
+</p-drawer>
+} }
+
+<ng-template #filtersPanel>
+  <section class="flex h-full flex-col gap-6" [class.border-r]="showSidebarBorder()" [class.pr-6]="showSidebarBorder()"
+    [class.border-zinc-100]="showSidebarBorder()" [class.dark:border-zinc-800]="showSidebarBorder()">
+    <app-category-filter [initialCategoryIds]="initialCategoryIds()"
+      (categoryChange)="onCategoryChange($event)"></app-category-filter>
+    <app-occasion-filter [initialOccasionIds]="initialOccasionIds()"
+      (occasionChange)="onOccasionChange($event)"></app-occasion-filter>
+    <app-rating-filter (ratingChange)="onRatingChange($event)"></app-rating-filter>
+    <app-price-filter (priceChange)="onPriceChange($event)"></app-price-filter>
+
+    <div class="border-t border-zinc-100 pt-5 dark:border-zinc-700">
+      <lib-button
+        class="[&>button]:min-h-12 [&>button]:rounded-2xl [&>button]:border [&>button]:border-transparent [&>button]:bg-maroon-50 [&>button]:text-maroon-500 [&>button]:shadow-none [&>button]:gap-2.5 [&>button]:px-6 [&>button]:text-lg [&>button]:font-medium [&>button:hover]:bg-maroon-100 [&>button:hover]:text-maroon-600 [&>button>lucide-icon]:h-5 [&>button>lucide-icon]:w-5 dark:[&>button]:border-zinc-700 dark:[&>button]:bg-zinc-800 dark:[&>button]:text-soft-pink-200 dark:[&>button:hover]:bg-zinc-700 dark:[&>button:hover]:text-soft-pink-100"
+        variant="secondary" size="lg" [block]="true" [icon]="ResetAllIcon" (buttonClick)="resetAllFilters()">
+        {{ 'Reset All' | translate }}
+      </lib-button>
+    </div>
+  </section>
+</ng-template>

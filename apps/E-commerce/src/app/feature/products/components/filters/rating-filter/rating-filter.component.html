@@ -1,0 +1,25 @@
+<section class="flex flex-col gap-4 pb-6 border-b border-zinc-100 dark:border-zinc-700">
+  <div class="flex items-center justify-between mb-1">
+    <h3 class="m-0 text-[20px] font-semibold text-zinc-800 dark:text-soft-pink-200">{{ 'Rating' | translate }}</h3>
+    @if (selectedRating()) {
+    <app-filter-reset-btn (reset)="onReset()"></app-filter-reset-btn>
+    }
+  </div>
+
+  <div class="flex items-center gap-1.5 rounded-2xl dark:bg-zinc-900/70 dark:px-3 dark:py-2"
+    (mouseleave)="onStarMouseleave()">
+    @for (star of stars; track star) {
+    <button type="button"
+      [attr.aria-label]="'Filter by ' + star + ' stars'"
+      class="relative flex h-7 w-7 cursor-pointer items-center justify-center border-none bg-transparent p-0 text-amber-500 transition-transform duration-100 ease-in-out hover:scale-110 dark:text-amber-400"
+      (mousemove)="onStarMousemove($event, star)" (click)="onStarClick($event, star)">
+      <lucide-icon [img]="StarIcon" [size]="28" [strokeWidth]="1.5"
+        class="pointer-events-none absolute inset-0 shrink-0 text-amber-500 dark:text-amber-400"></lucide-icon>
+
+      <lucide-icon [img]="StarIcon" [size]="28" [strokeWidth]="1.5"
+        class="pointer-events-none absolute inset-0 shrink-0 fill-current text-amber-500 transition-all duration-75 ease-linear dark:text-amber-400"
+        [style.clip-path]="getClipPath(star)"></lucide-icon>
+    </button>
+    }
+  </div>
+</section>

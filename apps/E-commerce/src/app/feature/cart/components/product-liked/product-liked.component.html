@@ -1,0 +1,8 @@
+<app-heading-title [title]="title() | translate"></app-heading-title>
+<div class="px-3">
+  <app-prodcut-carousal
+    [products]="products()"
+    [responsiveOptions]="responsiveOptions()"
+    [notFound]="notFound() | translate"
+  />
+</div>
