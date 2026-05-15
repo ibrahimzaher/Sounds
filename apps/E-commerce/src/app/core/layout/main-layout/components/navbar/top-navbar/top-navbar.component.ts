@@ -107,7 +107,7 @@ export class TopNavbarComponent {
           {
             label: this.translate.instant('NAVBAR.ACCOUNT_MENU.DASHBOARD'),
             icon: 'pi pi-chart-bar',
-            routerLink: '/',
+            routerLink: '/dashboard',
           },
           {
             label: this.translate.instant('NAVBAR.ACCOUNT_MENU.LOGOUT'),
