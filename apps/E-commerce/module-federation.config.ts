@@ -15,7 +15,11 @@ const config: ModuleFederationConfig = {
    *
    */
   remotes: [
-    ['dashboard', 'https://sounds-dashboard.vercel.app/mf-manifest.json'],
+    [
+      'dashboard',
+      process.env['DASHBOARD_REMOTE_MANIFEST_URL'] ??
+        'https://sounds-dashboard.vercel.app/mf-manifest.json',
+    ],
   ],
 };
 

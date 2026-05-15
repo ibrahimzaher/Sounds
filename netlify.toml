@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build:ecommerce"
+  publish = "dist/apps/E-commerce/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -9,6 +9,7 @@
   "scripts": {
     "build:ecommerce": "nx build E-commerce",
     "build:dashboard": "nx build dashboard",
+    "postinstall": "node scripts/ensure-babel-runtime-path.js",
     "serve": "nx serve E-commerce"
   },
   "dependencies": {
