@@ -8,14 +8,14 @@ import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
-  const toast = inject(ToastrService);
-  const router = inject(Router);
-  const auth = inject(AuthRepo);
   const injector = inject(Injector);
   const platFormId = inject(PLATFORM_ID);
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
       const translate = injector.get(TranslateService);
+      const toast = injector.get(ToastrService);
+      const router = injector.get(Router);
+      const auth = injector.get(AuthRepo);
 
       const hasAuthHeader = req.headers.has('Authorization');
       const isSignInRequest = req.url.includes('/auth/');

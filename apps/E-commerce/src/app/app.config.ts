@@ -61,10 +61,11 @@ import {
   ChevronLeft,
   PlusCircle,
   Phone,
-  Check,
-  Clock3,
   Mail,
+  Check,
+  Clock,
 } from 'lucide-angular';
+import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { provideToastr } from 'ngx-toastr';
 import { providePrimeNG } from 'primeng/config';
@@ -158,7 +159,7 @@ export const appConfig: ApplicationConfig = {
         PlusCircle,
         Phone,
         Check,
-        Clock3,
+        Clock,
         Mail,
       })
     ),
@@ -171,6 +172,7 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
+    SsrCookieService,
     DialogService,
     ConfirmationService,
   ],
