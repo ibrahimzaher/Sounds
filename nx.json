@@ -34,7 +34,7 @@
     },
     "@nx/angular:webpack-browser": {
       "cache": true,
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "inputs": [
         "production",
         "^production",
