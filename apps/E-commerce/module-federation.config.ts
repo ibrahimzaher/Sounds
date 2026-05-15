@@ -14,7 +14,9 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: [],
+  remotes: [
+    ['dashboard', 'https://sounds-dashboard.vercel.app/mf-manifest.json'],
+  ],
 };
 
 /**

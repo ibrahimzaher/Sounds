@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { inject, provideAppInitializer } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SsrCookieService } from 'ngx-cookie-service-ssr';
+import { firstValueFrom } from 'rxjs';
 
 export function provideLanguageInitializer() {
   return provideAppInitializer(() => {
@@ -15,11 +16,7 @@ export function provideLanguageInitializer() {
     document.documentElement.setAttribute('dir', direction);
     document.documentElement.setAttribute('lang', lang);
 
-    queueMicrotask(() => {
-      translateService.setFallbackLang('en');
-      translateService.use(lang).subscribe({
-        error: () => undefined,
-      });
-    });
+    translateService.setFallbackLang('en');
+    return firstValueFrom(translateService.use(lang));
   });
 }

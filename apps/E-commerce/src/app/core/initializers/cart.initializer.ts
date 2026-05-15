@@ -9,8 +9,6 @@ export function provideCartInitializer() {
     const storageService = inject(StorageService);
     if (!storageService.get('token')) return;
 
-    queueMicrotask(() => {
-      cartService.getLoggedUserCart().pipe(take(1)).subscribe();
-    });
+    return cartService.getLoggedUserCart().pipe(take(1));
   });
 }

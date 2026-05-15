@@ -34,16 +34,9 @@ export function provideAuth(
     provideAppInitializer(() => {
       const storage = inject(AuthStorageService);
       const authRepo = inject(AuthRepo);
-      if (!storage.hasToken()) {
-        return;
-      }
-
-      queueMicrotask(() => {
-        authRepo
-          .profileData()
-          .pipe(catchError(() => of(null)))
-          .subscribe();
-      });
+      return storage.hasToken()
+        ? authRepo.profileData().pipe(catchError(() => of(null)))
+        : of(null);
     }),
   ];
 }
