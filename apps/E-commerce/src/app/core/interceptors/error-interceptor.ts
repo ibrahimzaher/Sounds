@@ -10,15 +10,23 @@ import { catchError, throwError } from 'rxjs';
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const injector = inject(Injector);
   const platFormId = inject(PLATFORM_ID);
+  const isTranslationRequest =
+    req.url.includes('/i18n/') || req.url.endsWith('.json');
+
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
+      if (isTranslationRequest) {
+        return throwError(() => err);
+      }
+
       const translate = injector.get(TranslateService);
       const toast = injector.get(ToastrService);
-      const router = injector.get(Router);
-      const auth = injector.get(AuthRepo);
 
       const hasAuthHeader = req.headers.has('Authorization');
       const isSignInRequest = req.url.includes('/auth/');
+      const shouldHandleAuth = hasAuthHeader || !isSignInRequest;
+      const router = shouldHandleAuth ? injector.get(Router) : null;
+      const auth = shouldHandleAuth ? injector.get(AuthRepo) : null;
 
       let serverError =
         typeof err.error === 'string'
@@ -29,10 +37,12 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
           serverError = translate.instant('ERRORS.NETWORK');
           break;
         case 401:
-          if (hasAuthHeader || !isSignInRequest) {
+          if (shouldHandleAuth && auth) {
             serverError = translate.instant('ERRORS.UNAUTHORIZED');
             auth.cleanData();
-            if (isPlatformBrowser(platFormId)) router.navigate(['/auth/login']);
+            if (isPlatformBrowser(platFormId) && router) {
+              router.navigate(['/auth/login']);
+            }
           }
           break;
         case 403:
